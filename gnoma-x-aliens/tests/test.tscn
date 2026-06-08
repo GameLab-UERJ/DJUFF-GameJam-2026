@@ -1,21 +1,22 @@
 [gd_scene format=3 uid="uid://dwu6su4jrcwp"]
 
+[ext_resource type="PackedScene" uid="uid://c1hf03xh6nw4q" path="res://Entities/platforms/plataforma.tscn" id="1_eig8f"]
 [ext_resource type="PackedScene" uid="uid://bmebh8syonlju" path="res://Entities/player/player.tscn" id="1_yggfj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eig8f"]
-size = Vector2(1053, 54.00128)
 
 [node name="Test" type="Node2D" unique_id=122387576]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=805429435]
-position = Vector2(520.4359, 524.9987)
+[node name="Plataforma" parent="." unique_id=1847397177 instance=ExtResource("1_eig8f")]
+position = Vector2(541.4359, 577.9987)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1187360871]
-position = Vector2(36.064087, 17.000671)
-shape = SubResource("RectangleShape2D_eig8f")
+[node name="Plataforma2" parent="." unique_id=1129970654 instance=ExtResource("1_eig8f")]
+position = Vector2(431, 409)
+scale = Vector2(0.2, 1)
 
-[node name="Player" parent="StaticBody2D" unique_id=1459404749 instance=ExtResource("1_yggfj")]
-position = Vector2(-339.4359, -149.99872)
+[node name="Player" parent="." unique_id=1459404749 instance=ExtResource("1_yggfj")]
+position = Vector2(181, 375)
 
-[node name="Camera2D" type="Camera2D" parent="StaticBody2D/Player" unique_id=692210525]
-zoom = Vector2(3, 3)
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=692210525]
+
+[node name="Plataforma3" parent="." unique_id=1540885473 instance=ExtResource("1_eig8f")]
+position = Vector2(790, 409)
+scale = Vector2(0.2, 1)

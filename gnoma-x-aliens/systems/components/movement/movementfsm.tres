@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://hkjs40oajbdc" path="res://addons/imjp94.yafsm/src/states/State.gd" id="2_l7gdk"]
 [ext_resource type="Script" uid="uid://dpamyvcoplc1s" path="res://addons/imjp94.yafsm/src/transitions/Transition.gd" id="3_iqrpg"]
 [ext_resource type="Script" uid="uid://ceyits422k8h8" path="res://addons/imjp94.yafsm/src/conditions/BooleanCondition.gd" id="4_iqrpg"]
+[ext_resource type="Script" uid="uid://bpvvlpv5beqhh" path="res://addons/imjp94.yafsm/src/conditions/Condition.gd" id="5_ktyj3"]
 [ext_resource type="Script" uid="uid://nfsybxdc751a" path="res://addons/imjp94.yafsm/src/conditions/FloatCondition.gd" id="6_ktyj3"]
 
 [sub_resource type="Resource" id="Resource_504j3"]
@@ -14,12 +15,12 @@ metadata/graph_offset = Vector2(421, 1082.5)
 [sub_resource type="Resource" id="Resource_atmlc"]
 script = ExtResource("2_l7gdk")
 name = "GoingDown"
-metadata/graph_offset = Vector2(549.5, 822.5)
+metadata/graph_offset = Vector2(549.5, 802.5)
 
 [sub_resource type="Resource" id="Resource_d04rg"]
 script = ExtResource("2_l7gdk")
 name = "GoingUp"
-metadata/graph_offset = Vector2(838.5, 822.5)
+metadata/graph_offset = Vector2(838.5, 802.5)
 
 [sub_resource type="Resource" id="Resource_ktyj3"]
 script = ExtResource("2_l7gdk")
@@ -51,6 +52,18 @@ from = "GoingDown"
 to = "Idle"
 conditions = {
 "direction_y": SubResource("Resource_xbgi2")
+}
+
+[sub_resource type="Resource" id="Resource_6d8gp"]
+script = ExtResource("5_ktyj3")
+name = "coyote_jump"
+
+[sub_resource type="Resource" id="Resource_y7jcj"]
+script = ExtResource("3_iqrpg")
+from = "GoingDown"
+to = "OnAir"
+conditions = {
+"coyote_jump": SubResource("Resource_6d8gp")
 }
 
 [sub_resource type="Resource" id="Resource_cs1dn"]
@@ -163,7 +176,8 @@ transitions = {
 "Idle": SubResource("Resource_bj0gh")
 },
 "GoingDown": {
-"Idle": SubResource("Resource_jc3e3")
+"Idle": SubResource("Resource_jc3e3"),
+"OnAir": SubResource("Resource_y7jcj")
 },
 "GoingUp": {
 "GoingDown": SubResource("Resource_6onf6")

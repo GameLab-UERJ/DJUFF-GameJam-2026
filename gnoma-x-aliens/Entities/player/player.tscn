@@ -314,7 +314,7 @@ script = ExtResource("1_4flbx")
 
 [node name="MovementComponent" parent="." unique_id=1526532134 instance=ExtResource("2_qiwj3")]
 speed = 200.0
-jump_velocity = -620.0
+max_time_jumping = 0.35
 
 [node name="BaseSprite" type="AnimatedSprite2D" parent="." unique_id=133153141]
 texture_filter = 1
