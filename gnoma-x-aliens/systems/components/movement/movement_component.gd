@@ -2,7 +2,7 @@ extends Component
 class_name MovementComponent
 
 
-enum PossibleStates {IDLE, WALKING, GOING_DOWN, GOING_UP,TURNING_ON}
+enum PossibleStates {IDLE, WALKING, GOING_DOWN, GOING_UP}
 
 
 signal changed_facing(left : bool)
@@ -10,6 +10,7 @@ signal changed_state(name : PossibleStates)
 signal landed
 
 
+@export var state_machine_player: StateMachinePlayer
 @export var enabled : bool = true
 @export var speed : float = 200
 @export var jump_velocity : float = 500
@@ -25,9 +26,17 @@ var _pressed_jump : bool = false
 
 
 @onready var entity : CharacterBody2D = parent as CharacterBody2D 
-@onready var state_machine_player: StateMachinePlayer = $StateMachinePlayer
 @onready var max_jump_timer: Timer = $MaxJumpTimer
 @onready var coyote_timer: Timer = $CoyoteTimer
+
+
+func _ready() -> void:
+	if not state_machine_player:
+		push_error("There is no state machine player for this movement component")
+		return
+	
+	state_machine_player.transited.connect(_on_state_machine_player_transited)
+	state_machine_player.updated.connect(_on_state_machine_player_updated)
 
 
 func _physics_process(delta: float) -> void:
@@ -59,14 +68,6 @@ func is_idle() -> bool:
 	return not entity.velocity
 
 
-func start_turn_on() -> void:
-	state_machine_player.set_trigger("start_turn_on")
-
-
-func end_turn_on() -> void:
-	state_machine_player.set_trigger("end_turn_on")
-
-
 func can_jump() -> bool:
 	return entity.is_on_floor() or not coyote_timer.is_stopped()
 
@@ -86,6 +87,8 @@ func handle_jump() -> void:
 			await get_tree().create_timer(0.3).timeout
 			entity.collision_mask = temp
 		else:
+			if not entity.is_on_floor():
+				state_machine_player.set_trigger("coyote_jump")
 			entity.velocity.y = -500
 
 
@@ -102,6 +105,9 @@ func handle_gravity(delta : float) -> void:
 
 
 func update_state_machine() -> void:
+	if not state_machine_player:
+		push_error("There is no state machine to update")
+		return
 	state_machine_player.set_param("on_air",_on_air)
 	state_machine_player.set_param("direction_x",entity.velocity.x)
 	state_machine_player.set_param("direction_y",entity.velocity.y)

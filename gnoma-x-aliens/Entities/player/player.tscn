@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://3kdqoyoxpkxw" path="res://Entities/player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://cwcjmyhf5cm3f" path="res://systems/components/movement/movement_component.tscn" id="2_qiwj3"]
+[ext_resource type="Script" uid="uid://dvohloe2sbc8v" path="res://addons/imjp94.yafsm/src/StateMachinePlayer.gd" id="2_v3hes"]
+[ext_resource type="Resource" uid="uid://dokddhfvkh32a" path="res://systems/components/movement/movementfsm.tres" id="3_5udp2"]
 [ext_resource type="Texture2D" uid="uid://bmy1gsdo3w68s" path="res://Assets/gabriel/player/idle.png" id="4_fkugw"]
 [ext_resource type="Texture2D" uid="uid://dn8ot1ewfygaj" path="res://Assets/gabriel/player/jump.png" id="5_8fjmc"]
 [ext_resource type="Texture2D" uid="uid://cfn8muvgfjq5y" path="res://Assets/gabriel/player/death.png" id="5_afbqv"]
@@ -312,9 +314,12 @@ size = Vector2(55, 29)
 z_index = 2
 script = ExtResource("1_4flbx")
 
-[node name="MovementComponent" parent="." unique_id=1526532134 instance=ExtResource("2_qiwj3")]
-speed = 200.0
-max_time_jumping = 0.35
+[node name="StateMachinePlayer" type="Node" parent="." unique_id=1006812457]
+script = ExtResource("2_v3hes")
+state_machine = ExtResource("3_5udp2")
+
+[node name="MovementComponent" parent="." unique_id=1526532134 node_paths=PackedStringArray("state_machine_player") instance=ExtResource("2_qiwj3")]
+state_machine_player = NodePath("../StateMachinePlayer")
 
 [node name="BaseSprite" type="AnimatedSprite2D" parent="." unique_id=133153141]
 texture_filter = 1
