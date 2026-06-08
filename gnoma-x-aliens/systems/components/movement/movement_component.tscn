@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cwcjmyhf5cm3f"]
+
+[ext_resource type="Script" uid="uid://d1l8ik5esjjnn" path="res://systems/components/movement/movement_component.gd" id="1_fuix6"]
+[ext_resource type="Script" uid="uid://byk1ah113xskx" path="res://addons/imjp94.yafsm/src/StateMachinePlayer.gd" id="2_d0w2g"]
+[ext_resource type="Resource" uid="uid://dokddhfvkh32a" path="res://systems/components/movement/movementfsm.tres" id="3_tigop"]
+
+[node name="MovementComponent" type="Node" unique_id=1526532134]
+script = ExtResource("1_fuix6")
+metadata/_custom_type_script = "uid://d1l8ik5esjjnn"
+
+[node name="StateMachinePlayer" type="Node" parent="." unique_id=537540180]
+script = ExtResource("2_d0w2g")
+state_machine = ExtResource("3_tigop")
+metadata/_custom_type_script = "uid://byk1ah113xskx"
+
+[node name="StateMachine" type="Node" parent="." unique_id=1458923130]
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=97007284]
+
+[connection signal="transited" from="StateMachinePlayer" to="." method="_on_state_machine_player_transited"]
