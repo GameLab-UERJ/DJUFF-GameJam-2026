@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://d3kaj5jyvb0yj"]
+
+[ext_resource type="PackedScene" uid="uid://ifihuh4c8j3d" path="res://Entities/NPC/npc_golem.tscn" id="1_dktoj"]
+[ext_resource type="Texture2D" uid="uid://bmwymgslewdq6" path="res://Assets/NPC/Npc-1 Golem_Paz.png" id="2_r41rv"]
+[ext_resource type="Texture2D" uid="uid://dkipy57mjpod3" path="res://Assets/NPC/Golem 2_New.png" id="3_lmias"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3mc0"]
+atlas = ExtResource("2_r41rv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7x4i"]
+atlas = ExtResource("2_r41rv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0iem"]
+atlas = ExtResource("2_r41rv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxjdt"]
+atlas = ExtResource("2_r41rv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cih2y"]
+atlas = ExtResource("2_r41rv")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_en0n3"]
+atlas = ExtResource("2_r41rv")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex8jf"]
+atlas = ExtResource("2_r41rv")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gr3e"]
+atlas = ExtResource("2_r41rv")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ocquk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3mc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7x4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0iem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxjdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cih2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_en0n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex8jf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gr3e")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1aet0"]
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[node name="NPC_Golem_2" unique_id=998401793 instance=ExtResource("1_dktoj")]
+
+[node name="Animation_Golem" parent="." index="1" unique_id=37047788]
+sprite_frames = SubResource("SpriteFrames_ocquk")
+frame_progress = 0.47870252
+
+[node name="NPC_Face" parent="CanvasLayer/Dialogue_Box" parent_id_path=PackedInt32Array(287675235) index="0" unique_id=693016402]
+texture = ExtResource("3_lmias")
+
+[node name="Dialogue_Label" parent="CanvasLayer" parent_id_path=PackedInt32Array(1343569817) index="1" unique_id=769701415]
+label_settings = SubResource("LabelSettings_1aet0")
