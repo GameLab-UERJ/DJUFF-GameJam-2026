@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cr4yokkhs3she" path="res://Assets/NPC/Golem 1_New.png" id="4_qlglv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlglv"]
-size = Vector2(27, 33)
+size = Vector2(64.5, 66.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibncb"]
 atlas = ExtResource("2_8klpv")
@@ -80,15 +80,19 @@ font_color = Color(0, 0, 0, 1)
 script = ExtResource("1_gqtn2")
 
 [node name="Collision_Golem" type="CollisionShape2D" parent="." unique_id=1614844062]
-position = Vector2(1, 4)
+position = Vector2(19.75, -12.75)
 shape = SubResource("RectangleShape2D_qlglv")
 
 [node name="Animation_Golem" type="AnimatedSprite2D" parent="." unique_id=37047788]
+position = Vector2(18.5, -18.5)
+scale = Vector2(2.15625, 2.15625)
 sprite_frames = SubResource("SpriteFrames_una1m")
 animation = &"idle"
+autoplay = "idle"
 frame_progress = 0.49974734
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1343569817]
+visible = false
 
 [node name="Dialogue_Box" type="TextureRect" parent="CanvasLayer" unique_id=287675235]
 offset_left = 18.000023
