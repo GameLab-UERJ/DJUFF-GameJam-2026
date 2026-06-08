@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://ifihuh4c8j3d"]
+
+[ext_resource type="Script" uid="uid://dnpjfr18et0cp" path="res://Entities/NPC/npc_golem.gd" id="1_gqtn2"]
+[ext_resource type="Texture2D" uid="uid://xs0sqcurxwgf" path="res://Assets/NPC/Npc-1 Golem_Protetor.png" id="2_8klpv"]
+[ext_resource type="Texture2D" uid="uid://c30sjr3cyp454" path="res://UI/DialogBoxFaceGnome.png" id="2_gqtn2"]
+[ext_resource type="Texture2D" uid="uid://cr4yokkhs3she" path="res://Assets/NPC/Golem 1_New.png" id="4_qlglv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlglv"]
+size = Vector2(27, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibncb"]
+atlas = ExtResource("2_8klpv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5tnc"]
+atlas = ExtResource("2_8klpv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bojbw"]
+atlas = ExtResource("2_8klpv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy7ia"]
+atlas = ExtResource("2_8klpv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn4bl"]
+atlas = ExtResource("2_8klpv")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6byj"]
+atlas = ExtResource("2_8klpv")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0o7c"]
+atlas = ExtResource("2_8klpv")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t816y"]
+atlas = ExtResource("2_8klpv")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_una1m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibncb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5tnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bojbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qy7ia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn4bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6byj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0o7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t816y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1xf3g"]
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[node name="NPC_Golem_1" type="StaticBody2D" unique_id=998401793]
+script = ExtResource("1_gqtn2")
+
+[node name="Collision_Golem" type="CollisionShape2D" parent="." unique_id=1614844062]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_qlglv")
+
+[node name="Animation_Golem" type="AnimatedSprite2D" parent="." unique_id=37047788]
+sprite_frames = SubResource("SpriteFrames_una1m")
+animation = &"idle"
+frame_progress = 0.49974734
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1343569817]
+
+[node name="Dialogue_Box" type="TextureRect" parent="CanvasLayer" unique_id=287675235]
+offset_left = 18.000023
+offset_top = 426.00006
+offset_right = 318.00003
+offset_bottom = 484.00006
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("2_gqtn2")
+
+[node name="NPC_Face" type="TextureRect" parent="CanvasLayer/Dialogue_Box" unique_id=693016402]
+layout_mode = 0
+offset_left = 7.0270205
+offset_top = 12.702684
+offset_right = 45.94594
+offset_bottom = 51.081062
+texture = ExtResource("4_qlglv")
+
+[node name="Dialogue_Label" type="Label" parent="CanvasLayer" unique_id=769701415]
+offset_left = 214.0
+offset_top = 476.0
+offset_right = 1104.0
+offset_bottom = 605.0
+text = "Olá, sou o golem protetor."
+label_settings = SubResource("LabelSettings_1xf3g")
+autowrap_mode = 2
+
+[node name="Name_Label" type="Label" parent="CanvasLayer" unique_id=281457044]
+offset_left = 47.0
+offset_top = 428.0
+offset_right = 268.0
+offset_bottom = 451.0
+text = "Golem Protetor"
