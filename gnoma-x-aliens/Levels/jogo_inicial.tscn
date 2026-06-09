@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://ifihuh4c8j3d" path="res://Entities/NPC/npc_golem.tscn" id="6_a5062"]
 [ext_resource type="Texture2D" uid="uid://bbd6jf4nrece8" path="res://Assets/Decorations/Animated_Fada_Loira.png" id="6_hlg74"]
 [ext_resource type="PackedScene" uid="uid://d3kaj5jyvb0yj" path="res://Entities/NPC/npc_golem_2.tscn" id="7_f3krg"]
-[ext_resource type="PackedScene" uid="uid://bmebh8syonlju" path="res://Entities/player/player.tscn" id="7_prruu"]
 [ext_resource type="Texture2D" uid="uid://b11xaqfnye4un" path="res://Assets/Decorations/Animated_Fada_Morena.png" id="9_cf0mp"]
 [ext_resource type="Texture2D" uid="uid://doil5mm44y0qr" path="res://Assets/Decorations/Animated_Fada_Ruiva.png" id="10_h7nnm"]
 [ext_resource type="Texture2D" uid="uid://c03ftm336xlw" path="res://Assets/Decorations/Animated_Frog.png" id="11_uv1gx"]
@@ -368,15 +367,6 @@ position = Vector2(1175, 496)
 
 [node name="NPC_Golem_2" parent="NPC" unique_id=689073392 instance=ExtResource("7_f3krg")]
 position = Vector2(1244, 497)
-
-[node name="Gnoma" parent="." unique_id=1459404749 instance=ExtResource("7_prruu")]
-position = Vector2(89, 506)
-collision_mask = 2
-
-[node name="Camera2D" type="Camera2D" parent="Gnoma" unique_id=290364734]
-zoom = Vector2(2, 2)
-limit_left = 0
-limit_bottom = 550
 
 [node name="Plataforms" type="Node" parent="." unique_id=1467625818]
 

@@ -11,6 +11,7 @@ signal landed
 
 
 @export var state_machine_player: StateMachinePlayer
+@export var is_player : bool = true
 @export var enabled : bool = true
 @export var speed : float = 200
 @export var jump_velocity : float = 500
@@ -43,15 +44,17 @@ func _physics_process(delta: float) -> void:
 	if not enabled:
 		return
 	handle_gravity(delta)
-	handle_jump()
+	if is_player:
+		handle_jump()
 	handle_walk()
 	update_state_machine()
 	
 	entity.move_and_slide()
 
 
-func handle_walk() -> void:
-	var direction : float = Input.get_axis("walk_left", "walk_right")
+func handle_walk(direction : float = 0) -> void:
+	if is_player:
+		direction = Input.get_axis("walk_left", "walk_right")
 	if not direction:
 		entity.velocity.x = move_toward(entity.velocity.x, 0, speed)
 	else:

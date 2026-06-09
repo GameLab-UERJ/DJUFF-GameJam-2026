@@ -3,11 +3,15 @@
 [ext_resource type="Script" uid="uid://dd3j27v4gji06" path="res://tests/test.gd" id="1_dsb46"]
 [ext_resource type="PackedScene" uid="uid://c1hf03xh6nw4q" path="res://Entities/platforms/plataforma.tscn" id="1_eig8f"]
 [ext_resource type="PackedScene" uid="uid://bmebh8syonlju" path="res://Entities/player/player.tscn" id="1_yggfj"]
+[ext_resource type="PackedScene" uid="uid://bb0vxy7wwjwik" path="res://Levels/jogo_inicial.tscn" id="2_jenrn"]
 [ext_resource type="PackedScene" uid="uid://bnpbqocg0cvdl" path="res://Entities/shooting/bubble.tscn" id="3_7517i"]
 [ext_resource type="PackedScene" uid="uid://c42e650g4r3sa" path="res://Entities/shooting/gun.tscn" id="5_uofsi"]
+[ext_resource type="PackedScene" uid="uid://chotu635406hr" path="res://Entities/enemies/sword_enemy.tscn" id="6_uofsi"]
 
 [node name="Test" type="Node2D" unique_id=122387576]
 script = ExtResource("1_dsb46")
+
+[node name="Jogo_inicial" parent="." unique_id=1382297692 instance=ExtResource("2_jenrn")]
 
 [node name="Plataforma" parent="." unique_id=1847397177 instance=ExtResource("1_eig8f")]
 position = Vector2(541.4359, 577.9987)
@@ -32,3 +36,7 @@ enabled = true
 [node name="Gun" parent="." unique_id=2109826722 instance=ExtResource("5_uofsi")]
 position = Vector2(534.0368, 440.73706)
 gun_is_from_player = false
+
+[node name="SwordEnemy" parent="." unique_id=71750838 instance=ExtResource("6_uofsi")]
+position = Vector2(506.87314, 492.84155)
+scale = Vector2(1.5, 1.5)
