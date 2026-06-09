@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://lhf0bmr84vtj"]
+
+[ext_resource type="Texture2D" uid="uid://d1jyvo5x82ik5" path="res://Assets/Plataform/Nave_Alien.png" id="1_dk8cw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsyop"]
+atlas = ExtResource("1_dk8cw")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yv2x"]
+atlas = ExtResource("1_dk8cw")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1iv7"]
+atlas = ExtResource("1_dk8cw")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60a3l"]
+atlas = ExtResource("1_dk8cw")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l0y2"]
+atlas = ExtResource("1_dk8cw")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koarl"]
+atlas = ExtResource("1_dk8cw")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mi1x"]
+atlas = ExtResource("1_dk8cw")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ub2c"]
+atlas = ExtResource("1_dk8cw")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_36383"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsyop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yv2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1iv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60a3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l0y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koarl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mi1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ub2c")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ihnvd"]
+radius = 1.9999998
+height = 80.0
+
+[node name="Node2D" type="Node2D" unique_id=1973717687]
+
+[node name="Nave_alien" type="StaticBody2D" parent="." unique_id=380232047]
+collision_layer = 2
+collision_mask = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Nave_alien" unique_id=1002214466]
+position = Vector2(5, 16)
+sprite_frames = SubResource("SpriteFrames_36383")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.5105976
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave_alien" unique_id=99794962]
+position = Vector2(3, -3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ihnvd")
