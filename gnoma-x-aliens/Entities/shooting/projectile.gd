@@ -23,7 +23,7 @@ func _ready() -> void:
 	enabled = enabled
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not enabled:
 		return
 	move_and_slide()

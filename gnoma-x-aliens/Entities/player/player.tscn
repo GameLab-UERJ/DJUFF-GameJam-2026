@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://d248ns60a2hvr" path="res://Assets/gabriel/steps.wav" id="8_26q78"]
 [ext_resource type="AudioStream" uid="uid://cu01gjucxuj3g" path="res://Assets/gabriel/jump.wav" id="9_bectd"]
 [ext_resource type="AudioStream" uid="uid://bdb84q7sy1lng" path="res://Assets/gabriel/land.wav" id="10_wvtmh"]
+[ext_resource type="PackedScene" uid="uid://c42e650g4r3sa" path="res://Entities/shooting/gun.tscn" id="11_pgwtq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0eo6o"]
 atlas = ExtResource("5_afbqv")
@@ -322,9 +323,16 @@ script = ExtResource("1_4flbx")
 script = ExtResource("2_v3hes")
 state_machine = ExtResource("3_5udp2")
 
-[node name="AttackComponent" type="Node" parent="." unique_id=1744869009]
+[node name="AttackComponent" type="Node" parent="." unique_id=1744869009 node_paths=PackedStringArray("gun", "left_point", "right_point")]
 script = ExtResource("4_5udp2")
+gun = NodePath("../Gun")
+left_point = NodePath("../Markers/LeftShootingPoint")
+right_point = NodePath("../Markers/RightShootingPoint")
+shooting_cooldown_time = 0.2
 metadata/_custom_type_script = "uid://c0we6sfls40sy"
+
+[node name="Cooldown" type="Timer" parent="AttackComponent" unique_id=1719194932]
+one_shot = true
 
 [node name="MovementComponent" parent="." unique_id=1526532134 node_paths=PackedStringArray("state_machine_player") instance=ExtResource("2_qiwj3")]
 state_machine_player = NodePath("../MovementStateMachinePlayer")
@@ -333,12 +341,18 @@ state_machine_player = NodePath("../MovementStateMachinePlayer")
 texture_filter = 1
 position = Vector2(0, -29)
 sprite_frames = SubResource("SpriteFrames_b2kln")
-animation = &"idle"
+animation = &"die"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1690655228]
 position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_5udp2")
+
+[node name="Gun" parent="." unique_id=2109826722 instance=ExtResource("11_pgwtq")]
+visible = false
+position = Vector2(26.129082, -25.41243)
+projectile_speed = 350.0
+projectile_scale = Vector2(1, 1)
 
 [node name="SfxPlayers" type="Node2D" parent="." unique_id=1419997019]
 
@@ -354,6 +368,14 @@ volume_db = 5.0
 stream = ExtResource("10_wvtmh")
 volume_db = 10.0
 pitch_scale = 0.5
+
+[node name="Markers" type="Node2D" parent="." unique_id=1335226324]
+
+[node name="LeftShootingPoint" type="Marker2D" parent="Markers" unique_id=1136117547]
+position = Vector2(-26, -25)
+
+[node name="RightShootingPoint" type="Marker2D" parent="Markers" unique_id=1091282068]
+position = Vector2(25, -25)
 
 [connection signal="transited" from="MovementStateMachinePlayer" to="." method="_on_movement_state_machine_player_transited"]
 [connection signal="changed_facing" from="MovementComponent" to="." method="_on_movement_component_changed_facing"]

@@ -32,7 +32,7 @@ func _ready() -> void:
 	is_facing_right = is_facing_right
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	update_facing()
 
 
@@ -47,10 +47,8 @@ func update_facing() -> void:
 
 
 func damage_player() -> void:
-	damaging_player = true
-	#TODO
 	if player:
-		print('damaged player')
+		player.take_damage()
 
 
 func position_sprites(animation : String) -> void:
@@ -79,7 +77,7 @@ func _on_damage_area_body_entered(body: Node2D) -> void:
 	player = body as Player
 
 
-func _on_damage_area_body_exited(body: Node2D) -> void:
+func _on_damage_area_body_exited(_body: Node2D) -> void:
 	player = null
 
 
@@ -115,6 +113,6 @@ func _on_detect_area_body_entered(body: Node2D) -> void:
 		play_animation("transform")
 
 
-func _on_detect_area_body_exited(body: Node2D) -> void:
+func _on_detect_area_body_exited(_body: Node2D) -> void:
 	detected_player = null
 	play_animation("transform",true)

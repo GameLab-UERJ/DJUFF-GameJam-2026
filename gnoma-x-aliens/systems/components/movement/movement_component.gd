@@ -138,7 +138,7 @@ func _on_state_machine_player_transited(from: Variant, to: Variant) -> void:
 	changed_state.emit(state)
 
 
-func _on_state_machine_player_updated(state: Variant, delta: Variant) -> void:
+func _on_state_machine_player_updated(state: Variant, _delta: Variant) -> void:
 	match state:
 		"GoingUp":
 			if _pressed_jump:

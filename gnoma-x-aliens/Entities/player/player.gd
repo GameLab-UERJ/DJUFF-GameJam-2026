@@ -18,12 +18,16 @@ var _is_dead : bool = false
 @onready var land_player: AudioStreamPlayer2D = $SfxPlayers/LandPlayer
 
 
-func died():
+func died() -> void:
 	if _is_dead:
 		return
 	_is_dead = true
 	movement_component.enabled = false
 	base_sprite.play("die")
+
+
+func take_damage() -> void:
+	died()
 
 
 func _on_movement_component_changed_facing(left: bool) -> void:

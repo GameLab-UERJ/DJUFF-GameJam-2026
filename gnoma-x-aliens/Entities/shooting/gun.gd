@@ -13,12 +13,20 @@ var _projectile_pool : Array[Projectile] = []
 var _available_projectiles: Array[int]   = []
 
 
+func _ready() -> void:
+	var bullets : Node2D = get_tree().current_scene.get_node_or_null("Projectiles")
+	if not bullets:
+		bullets = Node2D.new()
+		bullets.name = "Projectiles"
+		get_tree().current_scene.add_child.call_deferred(bullets)
+
+
 func spawn_projectile() -> Projectile:
 	if _available_projectiles.is_empty():
 		_projectile_pool.append(projectile_scene.instantiate())
 		_available_projectiles.append(len(_projectile_pool)-1)
 		_projectile_pool[-1].ended_lifetime.connect(_on_ended_lifetime)
-		add_child(_projectile_pool[-1])
+		get_tree().current_scene.get_node("Projectiles").add_child(_projectile_pool[-1])
 	
 	return  _projectile_pool[_available_projectiles.pop_back()]
 
