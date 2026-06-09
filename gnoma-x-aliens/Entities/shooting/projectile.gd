@@ -23,7 +23,7 @@ func _ready() -> void:
 	enabled = enabled
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not enabled:
 		return
 	move_and_slide()
@@ -55,11 +55,9 @@ func enable(value : bool) -> void:
 
 func _on_hit_area_body_entered(body: Node2D) -> void:
 	hit.emit(body)
-	print('hit')
 	_on_end_lifetime()
 
 
 func _on_end_lifetime() -> void:
 	ended_lifetime.emit(self)
-	print('ended_lifetime')
 	enabled = false

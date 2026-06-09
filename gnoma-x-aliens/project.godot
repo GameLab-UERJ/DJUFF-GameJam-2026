@@ -21,6 +21,12 @@ DialogueManager="*uid://c3rodes2l3gxb"
 EasyTransition="*uid://cq0t7o8xelk4k"
 Util="*uid://cvxgn7f5q8wcx"
 
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/easytransition/plugin.cfg", "res://addons/imjp94.yafsm/plugin.cfg")
