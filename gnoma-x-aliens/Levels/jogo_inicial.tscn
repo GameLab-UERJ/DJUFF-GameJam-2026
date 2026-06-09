@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://d4ajjlqloqevf" path="res://Assets/Decorations/Cogumelo_Amarelo.png" id="12_njptj"]
 [ext_resource type="Texture2D" uid="uid://duseot17yccfj" path="res://Assets/Decorations/Cogumelo_Azul.png" id="13_oksyy"]
 [ext_resource type="PackedScene" uid="uid://lhf0bmr84vtj" path="res://Entities/Plataform/node_2d.tscn" id="18_hlg74"]
+[ext_resource type="PackedScene" uid="uid://dbxno8wijwyxg" path="res://tests/boss.tscn" id="19_cf0mp"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_22bof"]
 tile_data = PackedInt32Array(0, 393216, 2, 65536, 393216, 3, 1, 458752, 2, 2, 65536, 0)
@@ -345,6 +346,7 @@ _data = {
 }
 
 [node name="Jogo_inicial" type="Node2D" unique_id=1382297692]
+position = Vector2(2770, -257)
 
 [node name="TileMap" type="Node" parent="." unique_id=643658493]
 
@@ -382,3 +384,22 @@ position = Vector2(2717, 372)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Plataforms/Plataforma_2" unique_id=131415975]
 libraries/ = SubResource("AnimationLibrary_njptj")
+
+[node name="Boss" parent="." unique_id=1565506577 instance=ExtResource("19_cf0mp")]
+position = Vector2(504, 493)
+collision_layer = 4
+collision_mask = 7
+
+[node name="IdleTimer" type="Timer" parent="Boss" unique_id=242786267]
+
+[node name="Attack1Timer" type="Timer" parent="Boss" unique_id=630206339]
+wait_time = 8.0
+one_shot = true
+
+[node name="Attack2Timer" type="Timer" parent="Boss" unique_id=7038317]
+wait_time = 5.0
+one_shot = true
+
+[node name="DeadTimer" type="Timer" parent="Boss" unique_id=1444663937]
+wait_time = 20.0
+one_shot = true
