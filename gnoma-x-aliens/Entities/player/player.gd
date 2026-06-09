@@ -33,23 +33,6 @@ func _on_movement_component_changed_facing(left: bool) -> void:
 		base_sprite.flip_h = false
 
 
-func _on_landed() -> void:
-	land_player.play(0.08)
-
-
-func _on_movement_component_changed_state(_name: MovementComponent.PossibleStates) -> void:
-	match _name:
-		MovementComponent.PossibleStates.IDLE:
-			base_sprite.play("idle")
-		MovementComponent.PossibleStates.WALKING:
-			base_sprite.play("walk")
-		MovementComponent.PossibleStates.GOING_UP:
-			base_sprite.play("jump")
-			jump_player.play(0.3)
-		MovementComponent.PossibleStates.GOING_DOWN:
-			base_sprite.play("fall")
-
-
 func _on_base_sprite_frame_changed() -> void:
 	if not base_sprite:
 		return 
@@ -64,3 +47,18 @@ func _on_base_sprite_animation_finished() -> void:
 	match base_sprite.animation:
 		"die":
 			player_died.emit()
+
+
+func _on_movement_state_machine_player_transited(from: Variant, to: Variant) -> void:
+	match to:
+		"Idle":
+			if from == "GoingDown":
+				land_player.play(0.08)
+			base_sprite.play("idle")
+		"Walking":
+			base_sprite.play("walk")
+		"GoingUp":
+			base_sprite.play("jump")
+			jump_player.play(0.3)
+		"GoingDown":
+			base_sprite.play("fall")

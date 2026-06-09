@@ -1,16 +1,21 @@
 [gd_scene format=3 uid="uid://dwu6su4jrcwp"]
 
+[ext_resource type="Script" uid="uid://dd3j27v4gji06" path="res://tests/test.gd" id="1_dsb46"]
 [ext_resource type="PackedScene" uid="uid://c1hf03xh6nw4q" path="res://Entities/platforms/plataforma.tscn" id="1_eig8f"]
 [ext_resource type="PackedScene" uid="uid://bmebh8syonlju" path="res://Entities/player/player.tscn" id="1_yggfj"]
+[ext_resource type="PackedScene" uid="uid://bnpbqocg0cvdl" path="res://Entities/shooting/bubble.tscn" id="3_7517i"]
+[ext_resource type="PackedScene" uid="uid://c42e650g4r3sa" path="res://Entities/shooting/gun.tscn" id="5_uofsi"]
 
 [node name="Test" type="Node2D" unique_id=122387576]
+script = ExtResource("1_dsb46")
 
 [node name="Plataforma" parent="." unique_id=1847397177 instance=ExtResource("1_eig8f")]
 position = Vector2(541.4359, 577.9987)
+scale = Vector2(3, 3)
 
 [node name="Plataforma2" parent="." unique_id=1129970654 instance=ExtResource("1_eig8f")]
-position = Vector2(431, 409)
-scale = Vector2(0.2, 1)
+position = Vector2(178, 570)
+scale = Vector2(3, 3)
 
 [node name="Player" parent="." unique_id=1459404749 instance=ExtResource("1_yggfj")]
 position = Vector2(181, 375)
@@ -19,4 +24,11 @@ position = Vector2(181, 375)
 
 [node name="Plataforma3" parent="." unique_id=1540885473 instance=ExtResource("1_eig8f")]
 position = Vector2(790, 409)
-scale = Vector2(0.2, 1)
+
+[node name="Bubble" parent="." unique_id=125904131 instance=ExtResource("3_7517i")]
+position = Vector2(470.17508, 341.56348)
+enabled = true
+
+[node name="Gun" parent="." unique_id=2109826722 instance=ExtResource("5_uofsi")]
+position = Vector2(534.0368, 440.73706)
+gun_is_from_player = false

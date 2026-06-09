@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c42e650g4r3sa"]
+
+[ext_resource type="Script" uid="uid://chotlgbxasmfl" path="res://Entities/shooting/gun.gd" id="1_q3bd8"]
+[ext_resource type="PackedScene" uid="uid://bnpbqocg0cvdl" path="res://Entities/shooting/bubble.tscn" id="2_i28om"]
+
+[node name="Gun" type="Node2D" unique_id=2109826722]
+script = ExtResource("1_q3bd8")
+projectile_scene = ExtResource("2_i28om")

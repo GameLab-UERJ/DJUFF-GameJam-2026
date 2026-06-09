@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bnpbqocg0cvdl"]
+
+[ext_resource type="Script" uid="uid://br04rrdv0f5n1" path="res://Entities/shooting/bubble.gd" id="1_q3hpu"]
+[ext_resource type="Texture2D" uid="uid://bkiiiviwjicgr" path="res://Assets/Bolha_da_Arma.png" id="2_q3hpu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0dr5"]
+atlas = ExtResource("2_q3hpu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mno52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0dr5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_71d3k"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3hpu"]
+radius = 1.4142135
+
+[node name="Bubble" type="CharacterBody2D" unique_id=1941715878]
+collision_layer = 16
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_q3hpu")
+metadata/_custom_type_script = "uid://dvadyakofjehk"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1684541331]
+position = Vector2(-0.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_mno52")
+autoplay = "default"
+frame_progress = 0.69149673
+
+[node name="HitArea" type="Area2D" parent="." unique_id=1016590619]
+collision_layer = 16
+collision_mask = 0
+
+[node name="HitAreaCollisionShape" type="CollisionShape2D" parent="HitArea" unique_id=660585685]
+shape = SubResource("CircleShape2D_71d3k")
+debug_color = Color(0.98039216, 0, 0, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1776538150]
+shape = SubResource("CircleShape2D_q3hpu")
+
+[node name="MaxTimeAliveTimer" type="Timer" parent="." unique_id=175758341]
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
+[connection signal="timeout" from="MaxTimeAliveTimer" to="." method="_on_end_lifetime"]

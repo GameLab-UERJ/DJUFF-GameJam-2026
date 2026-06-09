@@ -1,19 +1,82 @@
 [gd_scene format=3 uid="uid://c1hf03xh6nw4q"]
 
-[ext_resource type="Texture2D" uid="uid://bsh60ryq7jxns" path="res://icon.svg" id="1_mjmel"]
+[ext_resource type="Texture2D" uid="uid://d1jyvo5x82ik5" path="res://Assets/Plataform/Nave_Alien.png" id="1_mjmel"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eig8f"]
-size = Vector2(1053, 54.00128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jip3u"]
+atlas = ExtResource("1_mjmel")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e7nc"]
+atlas = ExtResource("1_mjmel")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eva6t"]
+atlas = ExtResource("1_mjmel")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vgu8"]
+atlas = ExtResource("1_mjmel")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujblv"]
+atlas = ExtResource("1_mjmel")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3vdn"]
+atlas = ExtResource("1_mjmel")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8pvi"]
+atlas = ExtResource("1_mjmel")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84w23"]
+atlas = ExtResource("1_mjmel")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gj32"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jip3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e7nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eva6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vgu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujblv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3vdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8pvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84w23")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_e0du8"]
+points = PackedVector2Array(-37, 0, -37, -3, -18, -4, 22, -4, 38, -4, 38, 0)
 
 [node name="Plataforma" type="StaticBody2D" unique_id=1847397177]
 
-[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1181767142]
-shape = SubResource("RectangleShape2D_eig8f")
-one_way_collision = true
+[node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=734861013]
+position = Vector2(3.5, 15)
+sprite_frames = SubResource("SpriteFrames_8gj32")
+frame_progress = 0.66166544
 
-[node name="Sprite" type="Sprite2D" parent="CollisionShape" unique_id=1656300029]
-self_modulate = Color(0, 0, 0, 1)
-show_behind_parent = true
-position = Vector2(0.5641022, 0.001253128)
-scale = Vector2(8.234375, 0.42187455)
-texture = ExtResource("1_mjmel")
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1181767142]
+position = Vector2(0, -2)
+shape = SubResource("ConvexPolygonShape2D_e0du8")
+one_way_collision = true
