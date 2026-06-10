@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://twymwy8o1l00"]
+
+[ext_resource type="Texture2D" uid="uid://dfnmocujl7r21" path="res://Assets/Boss/Nave_Final.png" id="1_edjd8"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_e0du8"]
+points = PackedVector2Array(-37, 0, -37, -3, -18, -4, 22, -4, 38, -4, 38, 0)
+
+[node name="Plataforma" type="StaticBody2D" unique_id=1847397177]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1181767142]
+position = Vector2(0, -2)
+shape = SubResource("ConvexPolygonShape2D_e0du8")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=219151572]
+position = Vector2(-2, -6)
+texture = ExtResource("1_edjd8")
