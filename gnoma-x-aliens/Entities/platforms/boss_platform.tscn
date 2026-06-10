@@ -10,6 +10,7 @@ points = PackedVector2Array(-37, 0, -37, -3, -18, -4, 22, -4, 38, -4, 38, 0)
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1181767142]
 position = Vector2(0, -2)
 shape = SubResource("ConvexPolygonShape2D_e0du8")
+disabled = true
 one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=219151572]
