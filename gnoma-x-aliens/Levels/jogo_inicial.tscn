@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://bb0vxy7wwjwik"]
 
+[ext_resource type="Script" uid="uid://gpotqhsiure" path="res://Levels/jogo_inicial.gd" id="1_cf0mp"]
+[ext_resource type="PackedScene" uid="uid://ckxcsqi1um2b8" path="res://UI/hp_hud.tscn" id="1_hlg74"]
 [ext_resource type="Texture2D" uid="uid://ft0rxgfbdkge" path="res://Assets/Tileset/TileSet-Gnomo x Alien ( Natureza ).png" id="1_upldb"]
 [ext_resource type="TileSet" uid="uid://dn7on72r0xo68" path="res://Assets/Tileset/new_tile_set.tres" id="2_22bof"]
 [ext_resource type="Texture2D" uid="uid://ccsefj0uho7li" path="res://Assets/Decorations/CASASMELOVARIANTS_DIREITA.png" id="3_f3krg"]
@@ -244,6 +246,9 @@ _data = {
 
 [node name="Jogo_inicial" type="Node2D" unique_id=1382297692]
 position = Vector2(2770, -257)
+script = ExtResource("1_cf0mp")
+
+[node name="HP_HUD" parent="." unique_id=374959831 instance=ExtResource("1_hlg74")]
 
 [node name="TileMap" type="Node" parent="." unique_id=643658493]
 
@@ -408,3 +413,6 @@ position = Vector2(901, 350)
 
 [node name="Nave_alien5" parent="." unique_id=1380044997 instance=ExtResource("18_hlg74")]
 position = Vector2(1661, 456)
+
+[connection signal="game_over" from="HP_HUD" to="." method="game_over"]
+[connection signal="took_damage" from="Player" to="." method="lost_life"]

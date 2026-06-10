@@ -4,12 +4,12 @@ importer="dialogue_manager"
 importer_version=15
 type="Resource"
 uid="uid://b8dwkmf5lsuv5"
-path="res://.godot/imported/golem.dialogue-3f65c424401167ed5f8a6743f0deb301.tres"
+path="res://.godot/imported/golem.dialogue-c003ad01d569146301975d3267d4b04f.tres"
 
 [deps]
 
-source_file="res://Dialogue/golem.dialogue"
-dest_files=["res://.godot/imported/golem.dialogue-3f65c424401167ed5f8a6743f0deb301.tres"]
+source_file="res://dialogue/golem.dialogue"
+dest_files=["res://.godot/imported/golem.dialogue-c003ad01d569146301975d3267d4b04f.tres"]
 
 [params]
 
