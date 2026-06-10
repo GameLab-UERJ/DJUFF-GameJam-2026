@@ -24,6 +24,9 @@ enum BossState {
 @onready var ground_detector: RayCast2D = $Ground_Detector
 @onready var player_back: RayCast2D = $Player_Back
 @onready var fake_wall: TileMapLayer = $"../FakeWall"
+@onready var attack_1_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/attack1"
+@onready var attack_2_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/attack2"
+@onready var dead_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/dead"
 
 # Sistema de diálogo
 @onready var canvas: CanvasLayer = $"../CanvasLayer"
@@ -120,7 +123,6 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-# Inicia o diálogo automaticamente
 func _start_dialogue() -> void:
 	current_state = BossState.DIALOGUE
 	anim.play("idle")
@@ -134,7 +136,6 @@ func _start_dialogue() -> void:
 	else:
 		_end_dialogue()
 
-# Input para avançar o diálogo
 func _input(event: InputEvent) -> void:
 	if not dialogue_finished and current_state == BossState.DIALOGUE:
 		if event.is_action_pressed("interact"):
@@ -150,9 +151,8 @@ func _end_dialogue() -> void:
 	dialogue_finished = true
 	dialogue_index = 0
 	print("BOSS: Diálogo finalizado! A luta começa!")
-	go_to_walk_state()  # Vai direto para WALK em vez de IDLE
-	
-	
+	go_to_walk_state()
+
 func _check_player_back() -> void:
 	if is_dead:
 		return
@@ -257,6 +257,7 @@ func go_to_walk_state() -> void:
 func go_to_attack1_state() -> void:
 	current_state = BossState.ATTACK_1
 	anim.play("attack_1")
+	attack_1_sfx.play()  # TOCA SFX DO ATAQUE 1
 	can_flip = true
 	_clear_attacks()
 	velocity = Vector2.ZERO
@@ -264,11 +265,13 @@ func go_to_attack1_state() -> void:
 func go_to_attack2_state() -> void:
 	current_state = BossState.ATTACK_2
 	anim.play("attack_2")
+	attack_2_sfx.play()  # TOCA SFX DO ATAQUE 2
 	_clear_attacks()
 	velocity = Vector2.ZERO
 
 func go_to_dead_state() -> void:
 	fake_wall.queue_free()
+	dead_sfx.play()  # TOCA SFX DE MORTE
 	current_state = BossState.DEAD
 	is_dead = true
 	anim.play("dead")
