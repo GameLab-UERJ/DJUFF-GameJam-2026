@@ -31,13 +31,14 @@ motion_mode = 1
 script = ExtResource("1_q3hpu")
 metadata/_custom_type_script = "uid://dvadyakofjehk"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1684541331]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=1684541331]
 position = Vector2(-0.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_mno52")
 autoplay = "default"
 frame_progress = 0.69149673
 
 [node name="HitArea" type="Area2D" parent="." unique_id=1016590619]
+visible = false
 collision_layer = 16
 collision_mask = 0
 

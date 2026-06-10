@@ -44,6 +44,7 @@ folder_colors={
 "res://UI/": "green",
 "res://addons/": "gray",
 "res://dialogue/": "yellow",
+"res://resource/": "blue",
 "res://systems/": "teal",
 "res://tests/": "purple"
 }
