@@ -101,6 +101,7 @@ autoplay = "idle"
 frame_progress = 0.49974734
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1343569817]
+visible = false
 
 [node name="Dialogue_Box" type="TextureRect" parent="CanvasLayer" unique_id=287675235]
 offset_left = 1.0000002
