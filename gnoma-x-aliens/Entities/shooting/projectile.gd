@@ -16,17 +16,26 @@ signal ended_lifetime(projectile : Projectile)
 @onready var hit_area: Area2D = $HitArea
 @onready var hit_area_collision_shape: CollisionShape2D = $HitArea/HitAreaCollisionShape
 @onready var max_time_alive_timer: Timer = $MaxTimeAliveTimer
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite
 
 
 func _ready() -> void:
 	is_from_player = is_from_player
 	enabled = enabled
-
+	animated_sprite.material = ShaderMaterial.new()
+	(animated_sprite.material as ShaderMaterial).shader = load("uid://i8xl186i1o18")
+	
 
 func _physics_process(_delta: float) -> void:
 	if not enabled:
 		return
 	move_and_slide()
+
+
+func change_outline_color(color : Color) -> void:
+	animated_sprite.material.set("shader_parameter/width",1)
+	animated_sprite.material.set("shader_parameter/outline_color",color)
+	pass
 
 
 func set_is_from_player(value : bool) -> void:

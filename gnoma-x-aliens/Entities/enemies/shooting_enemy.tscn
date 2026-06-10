@@ -358,6 +358,7 @@ position = Vector2(26.129082, -25.41243)
 gun_is_from_player = false
 projectile_speed = 300.0
 projectile_scale = Vector2(1, 1)
+projectile_outline_color = Color(0.627451, 0, 0, 1)
 
 [node name="Markers" type="Node2D" parent="." unique_id=1428574252]
 

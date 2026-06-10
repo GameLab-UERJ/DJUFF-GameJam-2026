@@ -506,10 +506,8 @@ state_machine = ExtResource("4_yj4sx")
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=544897740]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_h4x1u")
-animation = &"attack"
+animation = &"idle"
 autoplay = "idle"
-frame = 26
-frame_progress = 1.0
 flip_h = true
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=513947746]
