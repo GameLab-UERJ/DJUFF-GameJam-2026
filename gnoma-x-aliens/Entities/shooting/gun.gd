@@ -54,5 +54,4 @@ func _on_ended_lifetime(projectile : Projectile) -> void:
 
 
 func _on_hit_body(body : Node2D) -> void:
-	if body is Enemy:
-		body.take_damage()
+	body.take_damage()

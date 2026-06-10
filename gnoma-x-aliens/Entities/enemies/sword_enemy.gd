@@ -8,6 +8,8 @@ const SHIFTED_SPRITES_POSITION_RIGHT: Vector2 = Vector2(20,-36)
 
 
 @export var ignore_positioning : bool = false
+@export var damage_player_range : Vector2i = Vector2i.ONE*-1
+
 
 
 var detected_player : Player
@@ -109,7 +111,7 @@ func _on_sprites_frame_changed() -> void:
 			if sprites.frame == 11:
 				spawn_sfx.stop()
 				attack_sfx.play(0.18)
-			elif sprites.frame > 11 and sprites.frame < 16:
+			elif sprites.frame > damage_player_range.x and sprites.frame < damage_player_range.y:
 				damage_player()
 			elif sprites.frame == 19:
 				spawn_sfx.play(1)

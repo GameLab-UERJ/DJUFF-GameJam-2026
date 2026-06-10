@@ -82,10 +82,6 @@ region = Rect2(480, 0, 32, 32)
 atlas = ExtResource("2_w2u54")
 region = Rect2(512, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tmf0t"]
-atlas = ExtResource("3_ra2xl")
-region = Rect2(1728, 0, 96, 96)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_nah43"]
 atlas = ExtResource("3_ra2xl")
 region = Rect2(1632, 0, 96, 96)
@@ -149,6 +145,10 @@ region = Rect2(576, 0, 96, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ulscp"]
 atlas = ExtResource("3_ra2xl")
 region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmf0t"]
+atlas = ExtResource("3_ra2xl")
+region = Rect2(1728, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m6fqu"]
 atlas = ExtResource("4_p8tv7")
@@ -289,9 +289,6 @@ animations = [{
 "speed": 20.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tmf0t")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nah43")
 }, {
@@ -468,6 +465,7 @@ size = Vector2(259, 150)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_1nmc2")
+damage_player_range = Vector2i(11, 16)
 health = 3
 metadata/_custom_type_script = "uid://d2n53aah088pb"
 
