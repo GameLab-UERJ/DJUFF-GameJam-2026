@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfg11kgvdi78w"
-path="res://.godot/imported/Boss_Face.png-4c7dc9c671fdac261111e911f5916d64.ctex"
+uid="uid://v4asc70mmreb"
+path="res://.godot/imported/GNOMAATTACK1.png-6da3813203a42dd3b2baa5d2e5ce68a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/NPC/Boss_Face.png"
-dest_files=["res://.godot/imported/Boss_Face.png-4c7dc9c671fdac261111e911f5916d64.ctex"]
+source_file="res://Assets/player/GNOMAATTACK1.png"
+dest_files=["res://.godot/imported/GNOMAATTACK1.png-6da3813203a42dd3b2baa5d2e5ce68a0.ctex"]
 
 [params]
 

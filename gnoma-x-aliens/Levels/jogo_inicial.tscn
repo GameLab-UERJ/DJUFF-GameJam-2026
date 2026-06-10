@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://c03ftm336xlw" path="res://Assets/Decorations/Animated_Frog.png" id="11_uv1gx"]
 [ext_resource type="Texture2D" uid="uid://d4ajjlqloqevf" path="res://Assets/Decorations/Cogumelo_Amarelo.png" id="12_njptj"]
 [ext_resource type="Texture2D" uid="uid://duseot17yccfj" path="res://Assets/Decorations/Cogumelo_Azul.png" id="13_oksyy"]
-[ext_resource type="PackedScene" uid="uid://lhf0bmr84vtj" path="res://Entities/Plataform/node_2d.tscn" id="18_hlg74"]
-[ext_resource type="PackedScene" uid="uid://dbxno8wijwyxg" path="res://tests/boss.tscn" id="19_cf0mp"]
+[ext_resource type="PackedScene" uid="uid://lhf0bmr84vtj" path="res://Entities/platforms/movable_platform.tscn" id="18_hlg74"]
+[ext_resource type="PackedScene" path="res://tests/boss.tscn" id="19_cf0mp"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_22bof"]
 tile_data = PackedInt32Array(0, 393216, 2, 65536, 393216, 3, 1, 458752, 2, 2, 65536, 0)

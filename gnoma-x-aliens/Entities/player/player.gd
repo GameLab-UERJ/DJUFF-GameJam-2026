@@ -43,7 +43,7 @@ func _on_base_sprite_frame_changed() -> void:
 	match base_sprite.animation:
 		"walk":
 			match base_sprite.frame:
-				2,7:
+				1,3:
 					footsteps_player.play()
 
 
@@ -66,3 +66,10 @@ func _on_movement_state_machine_player_transited(from: Variant, to: Variant) -> 
 			jump_player.play(0.3)
 		"GoingDown":
 			base_sprite.play("fall")
+
+
+func _on_movement_state_machine_player_updated(state: Variant, _delta: Variant) -> void:
+	match state:
+		"Walking":
+			if not base_sprite.is_playing():
+				base_sprite.play("walk")

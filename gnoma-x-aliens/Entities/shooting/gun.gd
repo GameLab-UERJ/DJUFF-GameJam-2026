@@ -13,6 +13,9 @@ var _projectile_pool : Array[Projectile] = []
 var _available_projectiles: Array[int]   = []
 
 
+@onready var shoot_sfx: AudioStreamPlayer2D = $ShootSfx
+
+
 func _ready() -> void:
 	var bullets : Node2D = get_tree().current_scene.get_node_or_null("Projectiles")
 	if not bullets:
@@ -26,6 +29,7 @@ func spawn_projectile() -> Projectile:
 		_projectile_pool.append(projectile_scene.instantiate())
 		_available_projectiles.append(len(_projectile_pool)-1)
 		_projectile_pool[-1].ended_lifetime.connect(_on_ended_lifetime)
+		_projectile_pool[-1].hit.connect(_on_hit_body)
 		get_tree().current_scene.get_node("Projectiles").add_child(_projectile_pool[-1])
 	
 	return  _projectile_pool[_available_projectiles.pop_back()]
@@ -38,6 +42,7 @@ func shoot_to(direction : Vector2) -> void:
 	projectile.scale = projectile_scale
 	projectile.is_from_player = gun_is_from_player
 	projectile.enabled = true
+	shoot_sfx.play()
 
 
 func shoot_at(node : Node2D) -> void:
@@ -46,3 +51,7 @@ func shoot_at(node : Node2D) -> void:
 
 func _on_ended_lifetime(projectile : Projectile) -> void:
 	_available_projectiles.append(_projectile_pool.find(projectile))
+
+
+func _on_hit_body(body : Node2D) -> void:
+	body.take_damage()
