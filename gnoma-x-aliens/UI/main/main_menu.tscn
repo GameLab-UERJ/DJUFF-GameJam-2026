@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://d4b7cvgy38tpi"]
+
+[ext_resource type="StyleBox" uid="uid://0ppvk40ecyn6" path="res://UI/main/button_config.tres" id="1_mvk1i"]
+[ext_resource type="Script" uid="uid://cr3m5mfy3gfdr" path="res://UI/main/main_menu.gd" id="1_qrgwt"]
+[ext_resource type="FontFile" uid="uid://v1yj08bqw1mc" path="res://Assets/UI/Fonts/CrayonLibre/CrayonLibre-Regular.ttf" id="1_rwq2w"]
+[ext_resource type="Texture2D" uid="uid://cbueeukvb2px4" path="res://Assets/UI/MENU_FINAL.png" id="2_6fw6k"]
+[ext_resource type="AudioStream" uid="uid://dobf5y7fgq3ql" path="res://Assets/SFX/Menu/abs-confirm-2.mp3" id="4_33alv"]
+[ext_resource type="AudioStream" uid="uid://bfjotqjifnphe" path="res://Assets/SFX/Menu/abs-pointer-2.mp3" id="5_d8c6p"]
+[ext_resource type="Texture2D" uid="uid://cywke7o43c1ej" path="res://Assets/UI/Itch io.png" id="6_mgtqr"]
+[ext_resource type="Texture2D" uid="uid://cfoaesi3tn6m8" path="res://Assets/UI/Discord.png" id="7_mal0d"]
+[ext_resource type="Texture2D" uid="uid://bf70r317k3cm4" path="res://Assets/UI/Instagram.png" id="7_mgtqr"]
+[ext_resource type="AudioStream" uid="uid://rm0u1kbm1oxv" path="res://Assets/Music/Gnoma_Alien_Music.wav" id="10_8gxq7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvk1i"]
+bg_color = Color(0.6, 0.6, 0.6, 0.6745098)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7eav"]
+bg_color = Color(0.6, 0.6, 0.6, 0.5294118)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7eav"]
+
+[node name="MainMenu" type="Control" unique_id=816464264]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qrgwt")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=114930744]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6fw6k")
+
+[node name="Panel" type="Panel" parent="." unique_id=867317528]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=247796804]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=1106252538]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 36
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Panel/HBoxContainer/VBoxContainer" unique_id=1485006193]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_rwq2w")
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "Gnoma x Aliens"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="ActionsGridContainer" type="GridContainer" parent="Panel/HBoxContainer/VBoxContainer" unique_id=1382635382]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/v_separation = 8
+
+[node name="NewGame" type="Button" parent="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer" unique_id=144342705]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_rwq2w")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("1_mvk1i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mvk1i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y7eav")
+theme_override_styles/disabled = ExtResource("1_mvk1i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y7eav")
+text = "New Game"
+
+[node name="Quit" type="Button" parent="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer" unique_id=333765619]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_rwq2w")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("1_mvk1i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mvk1i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y7eav")
+theme_override_styles/disabled = ExtResource("1_mvk1i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y7eav")
+text = "Quit
+"
+
+[node name="GridContainer" type="GridContainer" parent="Panel/HBoxContainer/VBoxContainer" unique_id=182171089]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+columns = 3
+
+[node name="InstagramButton" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer/GridContainer" unique_id=333438725]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("7_mgtqr")
+stretch_mode = 0
+
+[node name="ItchButton" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer/GridContainer" unique_id=816048960]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture_normal = ExtResource("6_mgtqr")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="DiscordButton" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer/GridContainer" unique_id=1444876379]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture_normal = ExtResource("7_mal0d")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PressAudio" type="AudioStreamPlayer" parent="." unique_id=984147553]
+stream = ExtResource("4_33alv")
+volume_db = -6.0
+
+[node name="HoverAudio" type="AudioStreamPlayer" parent="." unique_id=1176570567]
+stream = ExtResource("5_d8c6p")
+volume_db = -6.0
+
+[node name="ThemeAudio" type="AudioStreamPlayer" parent="." unique_id=932111860]
+stream = ExtResource("10_8gxq7")
+volume_db = -8.0
+
+[connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/NewGame" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/Quit" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/GridContainer/InstagramButton" to="." method="_on_mouse_entered_links" binds= [NodePath("Panel/HBoxContainer/VBoxContainer/GridContainer/InstagramButton")]]
+[connection signal="mouse_exited" from="Panel/HBoxContainer/VBoxContainer/GridContainer/InstagramButton" to="." method="_on_mouse_exited_links" binds= [NodePath("Panel/HBoxContainer/VBoxContainer/GridContainer/InstagramButton")]]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/GridContainer/InstagramButton" to="." method="_on_instagram_button_pressed"]
+[connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/GridContainer/ItchButton" to="." method="_on_mouse_entered_links" binds= [NodePath("Panel/HBoxContainer/VBoxContainer/GridContainer/ItchButton")]]
+[connection signal="mouse_exited" from="Panel/HBoxContainer/VBoxContainer/GridContainer/ItchButton" to="." method="_on_mouse_exited_links" binds= [NodePath("Panel/HBoxContainer/VBoxContainer/GridContainer/ItchButton")]]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/GridContainer/ItchButton" to="." method="_on_itch_button_pressed"]
+[connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/GridContainer/DiscordButton" to="." method="_on_mouse_entered_links" binds= [NodePath("Panel/HBoxContainer/VBoxContainer/GridContainer/DiscordButton")]]
+[connection signal="mouse_exited" from="Panel/HBoxContainer/VBoxContainer/GridContainer/DiscordButton" to="." method="_on_mouse_exited_links" binds= [NodePath("Panel/HBoxContainer/VBoxContainer/GridContainer/DiscordButton")]]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/GridContainer/DiscordButton" to="." method="_on_discord_button_pressed"]
