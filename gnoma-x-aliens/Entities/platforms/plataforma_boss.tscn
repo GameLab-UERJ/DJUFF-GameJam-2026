@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://mw2crue4g50n"]
+
+[ext_resource type="PackedScene" uid="uid://c1hf03xh6nw4q" path="res://Entities/platforms/static_platform.tscn" id="1_wfxvj"]
+
+[node name="Plataforma" unique_id=1847397177 instance=ExtResource("1_wfxvj")]
+
+[node name="Sprites" parent="." index="0" unique_id=734861013]
+frame_progress = 0.0
