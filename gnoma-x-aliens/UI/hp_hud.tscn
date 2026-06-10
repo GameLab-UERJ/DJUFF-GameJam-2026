@@ -6,40 +6,49 @@
 [node name="HP_HUD" type="CanvasLayer" unique_id=374959831]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=283987798]
-offset_top = 1.0
-offset_right = 90.0
-offset_bottom = 22.0
+anchors_preset = -1
+anchor_right = 0.141
+anchor_bottom = 0.097
+offset_left = 16.0
+offset_top = 11.0
+offset_right = 15.7599945
+offset_bottom = 10.079998
 
 [node name="HealthBar" type="Control" parent="VBoxContainer" unique_id=414557896]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
 [node name="Heart1" type="Sprite2D" parent="VBoxContainer/HealthBar" unique_id=787724627]
-position = Vector2(7, 6)
+position = Vector2(14.5, 13)
+scale = Vector2(1.9375, 1.875)
 texture = ExtResource("1_ho2id")
 
 [node name="Heart2" type="Sprite2D" parent="VBoxContainer/HealthBar" unique_id=1753356678]
-position = Vector2(20, 6)
+position = Vector2(42.000004, 13)
+scale = Vector2(1.938, 1.875)
 texture = ExtResource("1_ho2id")
 
 [node name="Heart3" type="Sprite2D" parent="VBoxContainer/HealthBar" unique_id=1040267870]
-position = Vector2(33, 6)
+position = Vector2(69, 13)
+scale = Vector2(1.938, 1.875)
 texture = ExtResource("1_ho2id")
 
 [node name="BubbleBar" type="Control" parent="VBoxContainer" unique_id=1628462786]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="Bubble" type="Sprite2D" parent="VBoxContainer/BubbleBar" unique_id=589043464]
-position = Vector2(7, 7)
-scale = Vector2(0.78125, 0.8125)
+position = Vector2(14, 32)
+scale = Vector2(1.390625, 1.4687501)
 texture = ExtResource("2_n2cxl")
 
 [node name="BubbleNumber" type="Label" parent="VBoxContainer/BubbleBar" unique_id=2054839484]
+custom_minimum_size = Vector2(0, -20)
 layout_mode = 0
-offset_left = 16.0
-offset_top = -6.0
-offset_right = 29.0
-offset_bottom = 69.0
+offset_left = 31.0
+offset_top = 6.0
+offset_right = 105.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 32
 text = "0
-
 "
