@@ -1,5 +1,5 @@
 extends Enemy
-class_name SwordEnemy
+class_name ShootingEnemy
 
 
 const INITIAL_SPRITES_POSITION : Vector2 = Vector2(0,-4)
@@ -13,7 +13,6 @@ const SHIFTED_SPRITES_POSITION_RIGHT: Vector2 = Vector2(20,-36)
 var detected_player : Player
 var player : Player
 var damaging_player : bool
-
 
 var is_facing_right : bool = false:
 	set(value):

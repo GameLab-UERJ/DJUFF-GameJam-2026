@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://dokddhfvkh32a" path="res://systems/components/movement/movementfsm.tres" id="3_5udp2"]
 [ext_resource type="Script" uid="uid://daiw5ljo68fb6" path="res://systems/components/attack_component.gd" id="4_5udp2"]
 [ext_resource type="Texture2D" uid="uid://cfn8muvgfjq5y" path="res://Assets/gabriel/player/death.png" id="5_afbqv"]
+[ext_resource type="Texture2D" uid="uid://14rkqanppm1j" path="res://Assets/player/gnomaFall.png" id="8_3xavr"]
 [ext_resource type="AudioStream" uid="uid://d248ns60a2hvr" path="res://Assets/gabriel/steps.wav" id="8_26q78"]
 [ext_resource type="Texture2D" uid="uid://bgpn510gx3ags" path="res://Assets/player/gnomaIDLE.png" id="8_pgwtq"]
 [ext_resource type="Texture2D" uid="uid://n28motnae5hl" path="res://Assets/player/GNOMASHOOT.png" id="9_3xavr"]
@@ -55,8 +56,8 @@ region = Rect2(512, 0, 64, 64)
 atlas = ExtResource("5_afbqv")
 region = Rect2(576, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5udp2"]
-atlas = ExtResource("9_pgwtq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_we61a"]
+atlas = ExtResource("8_3xavr")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3xavr"]
@@ -183,7 +184,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5udp2")
+"texture": SubResource("AtlasTexture_we61a")
 }],
 "loop": false,
 "name": &"fall",
@@ -272,6 +273,10 @@ script = ExtResource("1_4flbx")
 script = ExtResource("2_v3hes")
 state_machine = ExtResource("3_5udp2")
 
+[node name="MovementComponent" parent="." unique_id=1526532134 node_paths=PackedStringArray("state_machine_player") instance=ExtResource("2_qiwj3")]
+state_machine_player = NodePath("../MovementStateMachinePlayer")
+max_time_jumping = 0.2
+
 [node name="AttackComponent" type="Node" parent="." unique_id=1744869009 node_paths=PackedStringArray("gun", "left_point", "right_point")]
 script = ExtResource("4_5udp2")
 gun = NodePath("../Gun")
@@ -283,27 +288,30 @@ metadata/_custom_type_script = "uid://c0we6sfls40sy"
 [node name="Cooldown" type="Timer" parent="AttackComponent" unique_id=1719194932]
 one_shot = true
 
-[node name="MovementComponent" parent="." unique_id=1526532134 node_paths=PackedStringArray("state_machine_player") instance=ExtResource("2_qiwj3")]
-state_machine_player = NodePath("../MovementStateMachinePlayer")
-max_time_jumping = 0.2
-
-[node name="BaseSprite" type="AnimatedSprite2D" parent="." unique_id=133153141]
-texture_filter = 1
-position = Vector2(0, -29)
-sprite_frames = SubResource("SpriteFrames_b2kln")
-animation = &"walk"
-autoplay = "idle"
-frame_progress = 0.7157255
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1690655228]
-position = Vector2(-1, -15)
-shape = SubResource("CapsuleShape2D_5udp2")
-
 [node name="Gun" parent="." unique_id=2109826722 instance=ExtResource("11_pgwtq")]
 visible = false
 position = Vector2(26.129082, -25.41243)
 projectile_speed = 300.0
 projectile_scale = Vector2(1, 1)
+
+[node name="Markers" type="Node2D" parent="." unique_id=1335226324]
+
+[node name="LeftShootingPoint" type="Marker2D" parent="Markers" unique_id=1136117547]
+position = Vector2(-20, -15)
+
+[node name="RightShootingPoint" type="Marker2D" parent="Markers" unique_id=1091282068]
+position = Vector2(20, -15)
+
+[node name="BaseSprite" type="AnimatedSprite2D" parent="." unique_id=133153141]
+texture_filter = 1
+position = Vector2(0, -29)
+sprite_frames = SubResource("SpriteFrames_b2kln")
+animation = &"fall"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1690655228]
+position = Vector2(-1, -15)
+shape = SubResource("CapsuleShape2D_5udp2")
 
 [node name="SfxPlayers" type="Node2D" parent="." unique_id=1419997019]
 
@@ -319,14 +327,6 @@ volume_db = 5.0
 stream = ExtResource("10_wvtmh")
 volume_db = 10.0
 pitch_scale = 0.5
-
-[node name="Markers" type="Node2D" parent="." unique_id=1335226324]
-
-[node name="LeftShootingPoint" type="Marker2D" parent="Markers" unique_id=1136117547]
-position = Vector2(-20, -15)
-
-[node name="RightShootingPoint" type="Marker2D" parent="Markers" unique_id=1091282068]
-position = Vector2(20, -15)
 
 [connection signal="transited" from="MovementStateMachinePlayer" to="." method="_on_movement_state_machine_player_transited"]
 [connection signal="updated" from="MovementStateMachinePlayer" to="." method="_on_movement_state_machine_player_updated"]

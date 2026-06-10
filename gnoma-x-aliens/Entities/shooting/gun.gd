@@ -29,6 +29,7 @@ func spawn_projectile() -> Projectile:
 		_projectile_pool.append(projectile_scene.instantiate())
 		_available_projectiles.append(len(_projectile_pool)-1)
 		_projectile_pool[-1].ended_lifetime.connect(_on_ended_lifetime)
+		_projectile_pool[-1].hit.connect(_on_hit_body)
 		get_tree().current_scene.get_node("Projectiles").add_child(_projectile_pool[-1])
 	
 	return  _projectile_pool[_available_projectiles.pop_back()]
@@ -50,3 +51,8 @@ func shoot_at(node : Node2D) -> void:
 
 func _on_ended_lifetime(projectile : Projectile) -> void:
 	_available_projectiles.append(_projectile_pool.find(projectile))
+
+
+func _on_hit_body(body : Node2D) -> void:
+	if body is Enemy:
+		body.take_damage()
