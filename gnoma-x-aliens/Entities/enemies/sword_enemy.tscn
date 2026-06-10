@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cm3frotffcv5b" path="res://Assets/Inimigo_1/SLIME-ALIEN-IDLE-TRANSFORM.png" id="5_7a8b0"]
 [ext_resource type="Texture2D" uid="uid://dx0b7w5mu7doa" path="res://Assets/Inimigo_1/SLIME-ALIEN-WALK.png" id="6_ytwod"]
 [ext_resource type="PackedScene" uid="uid://cwcjmyhf5cm3f" path="res://systems/components/movement/movement_component.tscn" id="7_w2u54"]
+[ext_resource type="AudioStream" uid="uid://diwkos2rauu7n" path="res://Assets/sfx/alert.wav" id="10_mim54"]
+[ext_resource type="AudioStream" uid="uid://q5wdrra46oaj" path="res://Assets/sfx/derrickmckinnon-keys-falling-on-ground-283265.mp3" id="11_bs6xp"]
+[ext_resource type="AudioStream" uid="uid://dlpt0rvt1tv6h" path="res://Assets/sfx/freesound_community-spawn-sound-43782.mp3" id="12_0mib4"]
+[ext_resource type="AudioStream" uid="uid://q8h65p64hlqn" path="res://Assets/sfx/universfield-sword-blade-slicing-flesh-352708.mp3" id="13_vhkxa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dyq3k"]
 atlas = ExtResource("2_w2u54")
@@ -420,7 +424,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"transform",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -458,7 +462,7 @@ animations = [{
 size = Vector2(41, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ytwod"]
-size = Vector2(450, 150)
+size = Vector2(259, 150)
 
 [node name="SwordEnemy" type="CharacterBody2D" unique_id=71750838]
 collision_layer = 8
@@ -498,9 +502,26 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea" unique_id=31952771]
-position = Vector2(0, -63.5)
+position = Vector2(0.5, -63.5)
 shape = SubResource("RectangleShape2D_ytwod")
 debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="SoundEffects" type="Node2D" parent="." unique_id=2016729010]
+
+[node name="AlertSfx" type="AudioStreamPlayer2D" parent="SoundEffects" unique_id=1678110375]
+stream = ExtResource("10_mim54")
+pitch_scale = 1.5
+
+[node name="TransformSfx" type="AudioStreamPlayer2D" parent="SoundEffects" unique_id=790224300]
+stream = ExtResource("11_bs6xp")
+pitch_scale = 0.5
+
+[node name="SpawnSfx" type="AudioStreamPlayer2D" parent="SoundEffects" unique_id=787638444]
+stream = ExtResource("12_0mib4")
+
+[node name="AttackSfx" type="AudioStreamPlayer2D" parent="SoundEffects" unique_id=1004887187]
+stream = ExtResource("13_vhkxa")
+pitch_scale = 0.5
 
 [connection signal="animation_finished" from="Sprites" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="Sprites" to="." method="_on_sprites_frame_changed"]
