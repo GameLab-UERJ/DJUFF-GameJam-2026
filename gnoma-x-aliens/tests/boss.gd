@@ -9,6 +9,7 @@ enum BossState {
 	DEAD
 }
 
+
 # Referências aos nós da cena
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Hitbox
