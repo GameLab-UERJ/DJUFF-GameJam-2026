@@ -1,7 +1,7 @@
 extends Control
 
 
-@export_file("*.tscn") var restart_scene_path: String = "res://tests/test.tscn"
+@export var restart_scene: PackedScene
 
 
 @onready var retry_button: Button = %RetryButton
@@ -20,7 +20,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_retry_button_pressed() -> void:
-	get_tree().change_scene_to_file(restart_scene_path)
+	if not restart_scene:
+		return
+	get_tree().change_scene_to_packed(restart_scene)
 
 
 func _on_quit_button_pressed() -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwwfyvxq34acl"]
+[gd_scene load_steps=7 format=3 uid="uid://dwwfyvxq34acl"]
 
 [ext_resource type="Script" path="res://menus/result_menu.gd" id="1_vyiqh"]
 [ext_resource type="FontFile" uid="uid://b31bkh7k0hlq8" path="res://Assets/fonts/Happy Gnome Free Trial.ttf" id="2_m7yqt"]
+[ext_resource type="PackedScene" uid="uid://dwu6su4jrcwp" path="res://tests/test.tscn" id="3_restart"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_title"]
 font = ExtResource("2_m7yqt")
@@ -37,6 +38,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vyiqh")
+restart_scene = ExtResource("3_restart")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
