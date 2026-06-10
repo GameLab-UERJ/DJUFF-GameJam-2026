@@ -5,6 +5,7 @@ signal boss_damaged(current_health: int, max_health: int)
 signal boss_died(final_position: Vector2)
 
 enum BossState {
+	DIALOGUE,
 	IDLE,
 	WALK,
 	ATTACK_1,
@@ -21,8 +22,14 @@ enum BossState {
 @onready var attack2_collision: CollisionShape2D = $Attack_2/Attack2Hitbox
 @onready var wall_detector: RayCast2D = $Wall_Detector
 @onready var ground_detector: RayCast2D = $Ground_Detector
+@onready var player_back: RayCast2D = $Player_Back
+@onready var fake_wall: TileMapLayer = $"../FakeWall"
 
-var current_state: BossState = BossState.IDLE
+# Sistema de diálogo
+@onready var canvas: CanvasLayer = $"../CanvasLayer"
+@onready var dialogue_label: Label = $"../CanvasLayer/Dialogue_Label"
+
+var current_state: BossState = BossState.DIALOGUE
 var direction: int = -1
 var start_position: Vector2
 var attack_rotation: int = 0
@@ -32,8 +39,8 @@ var current_health: int = max_health
 
 var player: Player
 
-const WALK_SPEED: float = 70.0
-const ATTACK_1_SPEED: float = 140.0
+const WALK_SPEED: float = 90.0
+const ATTACK_1_SPEED: float = 200.0
 const ATTACK_2_SPEED: float = 35.0
 
 var idle_timer: Timer
@@ -50,9 +57,22 @@ const IDLE_TIME: float = 2.0
 const WALK_TIME: float = 3.0
 const DAMAGE_COOLDOWN_TIME: float = 0.3
 
+# Variáveis de diálogo
+var dialogue_index: int = 0
+var dialogue_finished: bool = false
+
+@export var dialogue_list: Array[String] = [
+	"Você ousou me desafiar?",
+	"Eu sou o guardião deste lugar!",
+	"Ninguém nunca me derrotou...",
+	"Prepare-se para a batalha!"
+]
+
 func _ready() -> void:
 	start_position = global_position
 	current_health = max_health
+	
+	player_back.enabled = true
 	
 	idle_timer = Timer.new()
 	idle_timer.one_shot = true
@@ -73,13 +93,20 @@ func _ready() -> void:
 	anim.frame_changed.connect(_on_frame_changed)
 	
 	_clear_attacks()
-	go_to_idle_state()
+	
+	# Inicia o diálogo automaticamente
+	_start_dialogue()
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
+	if current_state != BossState.DIALOGUE and dialogue_finished:
+		_check_player_back()
+	
 	match current_state:
+		BossState.DIALOGUE:
+			velocity = Vector2.ZERO
 		BossState.IDLE:
 			velocity = Vector2.ZERO
 		BossState.WALK:
@@ -92,6 +119,53 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 	
 	move_and_slide()
+
+# Inicia o diálogo automaticamente
+func _start_dialogue() -> void:
+	current_state = BossState.DIALOGUE
+	anim.play("idle")
+	canvas.visible = true
+	get_tree().paused = true
+	dialogue_index = 0
+	
+	if dialogue_list.size() > 0:
+		dialogue_label.text = dialogue_list[dialogue_index]
+		dialogue_index += 1
+	else:
+		_end_dialogue()
+
+# Input para avançar o diálogo
+func _input(event: InputEvent) -> void:
+	if not dialogue_finished and current_state == BossState.DIALOGUE:
+		if event.is_action_pressed("interact"):
+			if dialogue_index < dialogue_list.size():
+				dialogue_label.text = dialogue_list[dialogue_index]
+				dialogue_index += 1
+			else:
+				_end_dialogue()
+
+func _end_dialogue() -> void:
+	canvas.visible = false
+	get_tree().paused = false
+	dialogue_finished = true
+	dialogue_index = 0
+	print("BOSS: Diálogo finalizado! A luta começa!")
+	go_to_walk_state()  # Vai direto para WALK em vez de IDLE
+	
+	
+func _check_player_back() -> void:
+	if is_dead:
+		return
+	
+	if current_state == BossState.ATTACK_1 or current_state == BossState.ATTACK_2:
+		return
+	
+	player_back.force_raycast_update()
+	
+	if player_back.is_colliding():
+		var collider = player_back.get_collider()
+		if collider is Player:
+			_flip()
 
 func _handle_walk_movement() -> void:
 	if not can_flip:
@@ -194,6 +268,7 @@ func go_to_attack2_state() -> void:
 	velocity = Vector2.ZERO
 
 func go_to_dead_state() -> void:
+	fake_wall.queue_free()
 	current_state = BossState.DEAD
 	is_dead = true
 	anim.play("dead")
@@ -227,6 +302,9 @@ func _on_attack_area_body_exited(_body: Node2D) -> void:
 
 func take_damage(damage_amount: int = 1) -> void:
 	if is_dead:
+		return
+	
+	if current_state == BossState.DIALOGUE:
 		return
 	
 	if damage_cooldown:
@@ -313,7 +391,11 @@ func reset() -> void:
 	attack_rotation = 0
 	damage_cooldown = false
 	player = null
+	dialogue_finished = false
+	dialogue_index = 0
+	canvas.visible = false
+	get_tree().paused = false
 	current_health = max_health
 	anim.modulate = Color.WHITE
 	global_position = start_position
-	go_to_idle_state()
+	_start_dialogue()
