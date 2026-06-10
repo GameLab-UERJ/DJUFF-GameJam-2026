@@ -27,8 +27,9 @@ enum BossState {
 @onready var attack_1_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/attack1"
 @onready var attack_2_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/attack2"
 @onready var dead_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/dead"
+@onready var walk_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/walk"
+@onready var hit_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/hit"
 
-# Sistema de diálogo
 @onready var canvas: CanvasLayer = $"../CanvasLayer"
 @onready var dialogue_label: Label = $"../CanvasLayer/Dialogue_Label"
 
@@ -60,7 +61,6 @@ const IDLE_TIME: float = 2.0
 const WALK_TIME: float = 3.0
 const DAMAGE_COOLDOWN_TIME: float = 0.3
 
-# Variáveis de diálogo
 var dialogue_index: int = 0
 var dialogue_finished: bool = false
 
@@ -96,8 +96,6 @@ func _ready() -> void:
 	anim.frame_changed.connect(_on_frame_changed)
 	
 	_clear_attacks()
-	
-	# Inicia o diálogo automaticamente
 	_start_dialogue()
 
 func _physics_process(delta: float) -> void:
@@ -150,7 +148,6 @@ func _end_dialogue() -> void:
 	get_tree().paused = false
 	dialogue_finished = true
 	dialogue_index = 0
-	print("BOSS: Diálogo finalizado! A luta começa!")
 	go_to_walk_state()
 
 func _check_player_back() -> void:
@@ -239,6 +236,7 @@ func _hide_attack2() -> void:
 	attack2_collision.visible = false
 
 func go_to_idle_state() -> void:
+	walk_sfx.stop()
 	current_state = BossState.IDLE
 	anim.play("idle")
 	_clear_attacks()
@@ -249,29 +247,33 @@ func go_to_idle_state() -> void:
 func go_to_walk_state() -> void:
 	current_state = BossState.WALK
 	anim.play("walk")
+	walk_sfx.play()
 	_clear_attacks()
 	can_flip = true
 	velocity.x = WALK_SPEED * direction
 	walk_timer.start(WALK_TIME)
 
 func go_to_attack1_state() -> void:
+	walk_sfx.stop()
 	current_state = BossState.ATTACK_1
 	anim.play("attack_1")
-	attack_1_sfx.play()  # TOCA SFX DO ATAQUE 1
+	attack_1_sfx.play()
 	can_flip = true
 	_clear_attacks()
 	velocity = Vector2.ZERO
 
 func go_to_attack2_state() -> void:
+	walk_sfx.stop()
 	current_state = BossState.ATTACK_2
 	anim.play("attack_2")
-	attack_2_sfx.play()  # TOCA SFX DO ATAQUE 2
+	attack_2_sfx.play()
 	_clear_attacks()
 	velocity = Vector2.ZERO
 
 func go_to_dead_state() -> void:
+	walk_sfx.stop()
 	fake_wall.queue_free()
-	dead_sfx.play()  # TOCA SFX DE MORTE
+	dead_sfx.play()
 	current_state = BossState.DEAD
 	is_dead = true
 	anim.play("dead")
@@ -315,6 +317,8 @@ func take_damage(damage_amount: int = 1) -> void:
 	
 	current_health -= damage_amount
 	damage_cooldown = true
+	
+	hit_sfx.play()
 	
 	print("🎯 BOSS TOMOU DANO! Vida: ", current_health, "/", max_health)
 	
