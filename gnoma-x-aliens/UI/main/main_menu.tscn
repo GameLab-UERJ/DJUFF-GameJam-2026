@@ -111,6 +111,19 @@ theme_override_styles/disabled = ExtResource("1_mvk1i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_y7eav")
 text = "New Game"
 
+[node name="Credits" type="Button" parent="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer" unique_id=2102787357]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_rwq2w")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("1_mvk1i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mvk1i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y7eav")
+theme_override_styles/disabled = ExtResource("1_mvk1i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y7eav")
+text = "Credits"
+
 [node name="Quit" type="Button" parent="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer" unique_id=333765619]
 custom_minimum_size = Vector2(140, 20)
 layout_mode = 2
@@ -137,6 +150,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("7_mgtqr")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="ItchButton" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer/GridContainer" unique_id=816048960]
@@ -167,6 +181,8 @@ volume_db = -8.0
 
 [connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/NewGame" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/Credits" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/Quit" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/GridContainer/InstagramButton" to="." method="_on_mouse_entered_links" binds= [NodePath("Panel/HBoxContainer/VBoxContainer/GridContainer/InstagramButton")]]

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 DialogueManager="*uid://c3rodes2l3gxb"
 EasyTransition="*uid://cq0t7o8xelk4k"
 Util="*uid://cvxgn7f5q8wcx"
+MenuMusic="*uid://7blvup3odqaf"
 
 [dialogue_manager]
 
@@ -93,7 +94,7 @@ shoot={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/golem.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/golem.dialogue")
 
 [layer_names]
 

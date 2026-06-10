@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://f4o8mclgl0og"]
+
+[ext_resource type="Texture2D" uid="uid://cbueeukvb2px4" path="res://Assets/UI/MENU_FINAL.png" id="1_gjm8c"]
+[ext_resource type="Script" uid="uid://cqh4iri4vfxlr" path="res://UI/Credits/credits.gd" id="1_vcckd"]
+[ext_resource type="FontFile" uid="uid://v1yj08bqw1mc" path="res://Assets/UI/Fonts/CrayonLibre/CrayonLibre-Regular.ttf" id="2_vcckd"]
+[ext_resource type="StyleBox" uid="uid://0ppvk40ecyn6" path="res://UI/main/button_config.tres" id="3_4i5kg"]
+[ext_resource type="AudioStream" uid="uid://rm0u1kbm1oxv" path="res://Assets/Music/Gnoma_Alien_Music.wav" id="5_4i5kg"]
+[ext_resource type="AudioStream" uid="uid://dobf5y7fgq3ql" path="res://Assets/SFX/Menu/abs-confirm-2.mp3" id="5_lfta3"]
+[ext_resource type="AudioStream" uid="uid://bfjotqjifnphe" path="res://Assets/SFX/Menu/abs-pointer-2.mp3" id="6_30bwe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4oh0"]
+bg_color = Color(0.6, 0.6, 0.6, 0.6745098)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfta3"]
+bg_color = Color(0.6, 0.6, 0.6, 0.5294118)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_30bwe"]
+
+[node name="Credits" type="Control" unique_id=258530010]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vcckd")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=317628143]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gjm8c")
+
+[node name="Panel" type="Panel" parent="." unique_id=1667516343]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1339989797]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=1983737740]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 36
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Panel/HBoxContainer/VBoxContainer" unique_id=327485383]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_vcckd")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Gnoma x Aliens"
+fit_content = true
+scroll_active = false
+scroll_following_visible_characters = true
+horizontal_alignment = 1
+
+[node name="Credits" type="RichTextLabel" parent="Panel/HBoxContainer/VBoxContainer" unique_id=2020390069]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_vcckd")
+bbcode_enabled = true
+text = "credits"
+horizontal_alignment = 1
+
+[node name="ActionsGridContainer" type="GridContainer" parent="Panel/HBoxContainer/VBoxContainer" unique_id=939745778]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/v_separation = 8
+
+[node name="ReturnButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer" unique_id=136802219]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_vcckd")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_4i5kg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n4oh0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lfta3")
+theme_override_styles/disabled = ExtResource("3_4i5kg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_30bwe")
+text = "Return
+"
+
+[node name="PressAudio" type="AudioStreamPlayer" parent="." unique_id=876795000]
+stream = ExtResource("5_lfta3")
+volume_db = -6.0
+
+[node name="HoverAudio" type="AudioStreamPlayer" parent="." unique_id=1280893390]
+stream = ExtResource("6_30bwe")
+volume_db = -6.0
+
+[node name="ThemeAudio" type="AudioStreamPlayer" parent="." unique_id=1780798888]
+stream = ExtResource("5_4i5kg")
+volume_db = -8.0
+
+[connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/ReturnButton" to="." method="_on_return_button_mouse_entered"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/ReturnButton" to="." method="_on_return_button_pressed"]
