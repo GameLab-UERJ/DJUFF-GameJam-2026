@@ -1,0 +1,11 @@
+~ start
+Golem1: [[Hi|Hello|Howdy]], this is some dialogue.
+Golem2: Here are some choices.
+- First one
+	Golem1: You picked the first one.
+- Second one
+	Golem2: You picked the second one.
+- Start again => start
+- End the conversation => END
+Boss: For more information see the online documentation.
+=> END
