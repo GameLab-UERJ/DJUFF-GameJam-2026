@@ -7,6 +7,7 @@ class_name Gun
 @export_group("Projectile","projectile_")
 @export var projectile_speed : float = 200
 @export var projectile_scale : Vector2 = Vector2.ONE*2
+@export var projectile_outline_color : Color = Color.BLACK
 
 
 var _projectile_pool : Array[Projectile] = []
@@ -42,6 +43,7 @@ func shoot_to(direction : Vector2) -> void:
 	projectile.scale = projectile_scale
 	projectile.is_from_player = gun_is_from_player
 	projectile.enabled = true
+	projectile.change_outline_color(projectile_outline_color)
 	shoot_sfx.play()
 
 

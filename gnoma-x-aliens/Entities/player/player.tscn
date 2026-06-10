@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://dokddhfvkh32a" path="res://systems/components/movement/movementfsm.tres" id="3_5udp2"]
 [ext_resource type="Script" uid="uid://daiw5ljo68fb6" path="res://systems/components/attack_component.gd" id="4_5udp2"]
 [ext_resource type="Texture2D" uid="uid://cfn8muvgfjq5y" path="res://Assets/gabriel/player/death.png" id="5_afbqv"]
+[ext_resource type="Shader" uid="uid://i8xl186i1o18" path="res://resource/shaders/outline.tres" id="7_vpvow"]
 [ext_resource type="Texture2D" uid="uid://14rkqanppm1j" path="res://Assets/player/gnomaFall.png" id="8_3xavr"]
 [ext_resource type="AudioStream" uid="uid://d248ns60a2hvr" path="res://Assets/gabriel/steps.wav" id="8_26q78"]
 [ext_resource type="Texture2D" uid="uid://bgpn510gx3ags" path="res://Assets/player/gnomaIDLE.png" id="8_pgwtq"]
@@ -15,6 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://c6inyqoukxnlp" path="res://Assets/player/gnomaWALK.png" id="10_pgwtq"]
 [ext_resource type="AudioStream" uid="uid://bdb84q7sy1lng" path="res://Assets/gabriel/land.wav" id="10_wvtmh"]
 [ext_resource type="PackedScene" uid="uid://c42e650g4r3sa" path="res://Entities/shooting/gun.tscn" id="11_pgwtq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vw8xl"]
+shader = ExtResource("7_vpvow")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/width = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0eo6o"]
 atlas = ExtResource("5_afbqv")
@@ -304,6 +310,7 @@ position = Vector2(20, -15)
 
 [node name="BaseSprite" type="AnimatedSprite2D" parent="." unique_id=133153141]
 texture_filter = 1
+material = SubResource("ShaderMaterial_vw8xl")
 position = Vector2(0, -29)
 sprite_frames = SubResource("SpriteFrames_b2kln")
 animation = &"fall"

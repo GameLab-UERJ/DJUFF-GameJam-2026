@@ -441,7 +441,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 7.0
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ssqvy"]
@@ -469,9 +469,8 @@ shape = SubResource("RectangleShape2D_xjte1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=493009381]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_qqmaw")
-animation = &"dead"
-frame = 11
-frame_progress = 1.0
+animation = &"walk"
+frame_progress = 0.086346984
 
 [node name="Wall_Detector" type="RayCast2D" parent="." unique_id=181000193]
 unique_name_in_owner = true
