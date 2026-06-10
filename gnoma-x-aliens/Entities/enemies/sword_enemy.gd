@@ -26,6 +26,10 @@ var is_facing_right : bool = false:
 
 @onready var sprites: AnimatedSprite2D = $Sprites
 @onready var damage_collision_shape: CollisionShape2D = $DamageArea/DamageCollisionShape
+@onready var alert_sfx: AudioStreamPlayer2D = $SoundEffects/AlertSfx
+@onready var transform_sfx: AudioStreamPlayer2D = $SoundEffects/TransformSfx
+@onready var spawn_sfx: AudioStreamPlayer2D = $SoundEffects/SpawnSfx
+@onready var attack_sfx: AudioStreamPlayer2D = $SoundEffects/AttackSfx
 
 
 func _ready() -> void:
@@ -84,10 +88,25 @@ func _on_damage_area_body_exited(_body: Node2D) -> void:
 func _on_sprites_frame_changed() -> void:
 	if not sprites:
 		return
+	if sprites.animation != "attack":
+		damaging_player = false
 	match sprites.animation:
+		"transform":
+			if sprites.frame == 3:
+				transform_sfx.play(0.55)
+		"alert":
+			if sprites.frame == 9:
+				alert_sfx.play()
 		"attack":
-			if sprites.frame > 11 and sprites.frame < 16:
+			if sprites.frame == 0:
+				spawn_sfx.play()
+			if sprites.frame == 11:
+				spawn_sfx.stop()
+				attack_sfx.play(0.18)
+			elif sprites.frame > 11 and sprites.frame < 16:
 				damage_player()
+			elif sprites.frame == 19:
+				spawn_sfx.play(1)
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
