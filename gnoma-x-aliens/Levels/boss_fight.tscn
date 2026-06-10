@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bfg11kgvdi78w" path="res://Assets/NPC/Boss_Face.png" id="8_7ykiu"]
 [ext_resource type="AudioStream" uid="uid://j2380nn0ylmx" path="res://Assets/sfx/dragon-studio-sword-slice-2-393845.mp3" id="9_8356q"]
 [ext_resource type="AudioStream" uid="uid://clje03b4dkffi" path="res://Assets/sfx/calango_fx_official-game-over-401236.mp3" id="10_o0vai"]
+[ext_resource type="AudioStream" uid="uid://d4bhhjw5edbp3" path="res://Assets/sfx/kalsstockmedia-dinosaur-monster-heavy-foot-steps-earth-shattering-246899.mp3" id="11_rqjxw"]
+[ext_resource type="AudioStream" uid="uid://dxalxkvb7fipl" path="res://Assets/sfx/data_pion-sfx34-stomp-534302 (1).mp3" id="12_fu4x7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jdiin"]
 texture = ExtResource("1_7cg3k")
@@ -235,3 +237,9 @@ stream = ExtResource("9_8356q")
 
 [node name="dead" type="AudioStreamPlayer2D" parent="Musicas_SFX" unique_id=524675797]
 stream = ExtResource("10_o0vai")
+
+[node name="walk" type="AudioStreamPlayer2D" parent="Musicas_SFX" unique_id=377718767]
+stream = ExtResource("11_rqjxw")
+
+[node name="hit" type="AudioStreamPlayer2D" parent="Musicas_SFX" unique_id=1405831319]
+stream = ExtResource("12_fu4x7")
