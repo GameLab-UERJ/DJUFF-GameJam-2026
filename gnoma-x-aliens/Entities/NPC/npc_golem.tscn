@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dnpjfr18et0cp" path="res://Entities/NPC/npc_golem.gd" id="1_gqtn2"]
 [ext_resource type="Texture2D" uid="uid://xs0sqcurxwgf" path="res://Assets/NPC/Npc-1 Golem_Protetor.png" id="2_8klpv"]
 [ext_resource type="Texture2D" uid="uid://c30sjr3cyp454" path="res://UI/DialogBoxFaceGnome.png" id="2_gqtn2"]
+[ext_resource type="Resource" uid="uid://b8dwkmf5lsuv5" path="res://dialogue/golem.dialogue" id="2_qlglv"]
 [ext_resource type="Texture2D" uid="uid://cr4yokkhs3she" path="res://Assets/NPC/Golem 1_New.png" id="4_qlglv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlglv"]
@@ -87,6 +88,8 @@ process_mode = 3
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_gqtn2")
+dialogue_resource = ExtResource("2_qlglv")
+dialogue_title = "golem1"
 
 [node name="Collision_Golem" type="CollisionShape2D" parent="." unique_id=1614844062]
 position = Vector2(19.75, -12.75)
