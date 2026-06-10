@@ -36,6 +36,7 @@ scale = Vector2(1.938, 1.875)
 texture = ExtResource("1_ho2id")
 
 [node name="BubbleBar" type="Control" parent="VBoxContainer" unique_id=1628462786]
+visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 

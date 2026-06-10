@@ -9,6 +9,8 @@ extends Control
 
 
 func _ready() -> void:
+	if not restart_scene:
+		restart_scene = Util.current_scene
 	retry_button.pressed.connect(_on_retry_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
 	retry_button.grab_focus()

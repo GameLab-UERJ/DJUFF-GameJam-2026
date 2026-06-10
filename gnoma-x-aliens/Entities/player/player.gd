@@ -9,6 +9,7 @@ signal took_damage
 @export var time_to_fully_dim : float = 15
 
 
+var last_position : Vector2
 var _is_dead : bool = false
 
 

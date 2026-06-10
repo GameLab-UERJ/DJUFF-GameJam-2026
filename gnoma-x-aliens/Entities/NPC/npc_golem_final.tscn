@@ -5,3 +5,5 @@
 [node name="NPC_Golem_Final" unique_id=998401793 instance=ExtResource("1_njstv")]
 scale = Vector2(1.5937849, 1.5937849)
 dialogue_list = Array[String](["Obrigado, voce me salvou.", "e salvou a todos do vilarejo", "Obrigado por Jogar!"])
+
+[connection signal="victory" from="." to="." method="_on_victory"]

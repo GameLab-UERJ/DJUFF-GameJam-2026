@@ -4,7 +4,10 @@ extends Node2D
 @onready var player: Player = $Player
 
 func _ready() -> void:
-	pass
+	if name == "JogoInicial":
+		Util.current_scene = load("uid://bb0vxy7wwjwik")
+	elif name == "BossFight":
+		Util.current_scene = load("uid://c81l0hulr32gg")
 
 
 func game_over() -> void:
