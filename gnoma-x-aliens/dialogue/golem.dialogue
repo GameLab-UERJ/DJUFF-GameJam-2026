@@ -39,26 +39,8 @@ Golem2: Prepare-se, pequena gnoma.
 
 
 ~ boss
-Boss: ...
-Boss: Há muito tempo eu protegia estas terras.
-Boss: Então os invasores chegaram dos céus.
-Boss: Eles prometeram poder. Eu aceitei.
-.
-- Você ajudou os alienígenas?
-	Boss: Sim.
-	Boss: E agora vejo o preço da minha escolha.
-	Boss: Meu núcleo está corrompido.
-	=> boss_final
-- Estou procurando meu povo.
-	Boss: Muitos foram capturados.
-	Boss: Talvez eles ainda estejam vivos.
-	Boss: Talvez sua luta não tenha sido em vão.
-	=> boss_final
-- Repetir diálogo => boss
-- Sair da conversa => END
-
-~ boss_final
-Boss: Não posso mais voltar atrás.
-Boss: Mas ainda posso cumprir meu último dever.
-Boss: Mostre-me sua força, pequena gnoma!
+Golem1: Obrigado, pequena gnoma.
+Golem1: Você me salvou.
+Golem1: E salvou todos do vilarejo.
+Golem1: Obrigado por jogar!
 => END
