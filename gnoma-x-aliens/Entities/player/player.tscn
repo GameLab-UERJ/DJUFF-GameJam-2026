@@ -7,10 +7,11 @@
 [ext_resource type="Script" uid="uid://daiw5ljo68fb6" path="res://systems/components/attack_component.gd" id="4_5udp2"]
 [ext_resource type="Texture2D" uid="uid://cfn8muvgfjq5y" path="res://Assets/gabriel/player/death.png" id="5_afbqv"]
 [ext_resource type="AudioStream" uid="uid://d248ns60a2hvr" path="res://Assets/gabriel/steps.wav" id="8_26q78"]
-[ext_resource type="Texture2D" uid="uid://bcy2dthnq45ha" path="res://Assets/player/temp/gnomaIDLE.png" id="8_pgwtq"]
-[ext_resource type="Texture2D" uid="uid://cin1kat4n1qgv" path="res://Assets/player/temp/GNOMASHOOT.png" id="9_3xavr"]
+[ext_resource type="Texture2D" uid="uid://bgpn510gx3ags" path="res://Assets/player/gnomaIDLE.png" id="8_pgwtq"]
+[ext_resource type="Texture2D" uid="uid://n28motnae5hl" path="res://Assets/player/GNOMASHOOT.png" id="9_3xavr"]
 [ext_resource type="AudioStream" uid="uid://cu01gjucxuj3g" path="res://Assets/gabriel/jump.wav" id="9_bectd"]
-[ext_resource type="Texture2D" uid="uid://bdabautblstgg" path="res://Assets/player/temp/gnomaJUMP.png" id="9_pgwtq"]
+[ext_resource type="Texture2D" uid="uid://cat0rtwg4sdfg" path="res://Assets/player/gnomaJUMP.png" id="9_pgwtq"]
+[ext_resource type="Texture2D" uid="uid://c6inyqoukxnlp" path="res://Assets/player/gnomaWALK.png" id="10_pgwtq"]
 [ext_resource type="AudioStream" uid="uid://bdb84q7sy1lng" path="res://Assets/gabriel/land.wav" id="10_wvtmh"]
 [ext_resource type="PackedScene" uid="uid://c42e650g4r3sa" path="res://Entities/shooting/gun.tscn" id="11_pgwtq"]
 
@@ -98,7 +99,7 @@ region = Rect2(512, 0, 64, 64)
 atlas = ExtResource("9_pgwtq")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pfh1x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgwtq"]
 atlas = ExtResource("9_3xavr")
 region = Rect2(64, 0, 64, 64)
 
@@ -106,9 +107,21 @@ region = Rect2(64, 0, 64, 64)
 atlas = ExtResource("9_3xavr")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pgwtq"]
-atlas = ExtResource("9_3xavr")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfh1x"]
+atlas = ExtResource("10_pgwtq")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr6eh"]
+atlas = ExtResource("10_pgwtq")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4vyk"]
+atlas = ExtResource("10_pgwtq")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agp5l"]
+atlas = ExtResource("10_pgwtq")
+region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b2kln"]
 animations = [{
@@ -218,22 +231,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pfh1x")
+"texture": SubResource("AtlasTexture_pgwtq")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8t7b4")
 }],
 "loop": false,
 "name": &"shoot",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pgwtq")
+"texture": SubResource("AtlasTexture_pfh1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr6eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4vyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agp5l")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5udp2"]
@@ -269,8 +291,9 @@ max_time_jumping = 0.2
 texture_filter = 1
 position = Vector2(0, -29)
 sprite_frames = SubResource("SpriteFrames_b2kln")
-animation = &"shoot"
+animation = &"walk"
 autoplay = "idle"
+frame_progress = 0.7157255
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1690655228]
 position = Vector2(-1, -15)
@@ -306,6 +329,7 @@ position = Vector2(-20, -15)
 position = Vector2(20, -15)
 
 [connection signal="transited" from="MovementStateMachinePlayer" to="." method="_on_movement_state_machine_player_transited"]
+[connection signal="updated" from="MovementStateMachinePlayer" to="." method="_on_movement_state_machine_player_updated"]
 [connection signal="changed_facing" from="MovementComponent" to="." method="_on_movement_component_changed_facing"]
 [connection signal="changed_state" from="MovementComponent" to="." method="_on_movement_component_changed_state"]
 [connection signal="landed" from="MovementComponent" to="." method="_on_landed"]
