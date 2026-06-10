@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn8ot1ewfygaj"
-path="res://.godot/imported/jump.png-e7f9f77f861958b8377212a24b2d3299.ctex"
+uid="uid://c2yde51x7dhqx"
+path="res://.godot/imported/SLIME-ALIEN-WALK.png-e9d777736f8aa5375270a6f101068418.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/player/jump.png"
-dest_files=["res://.godot/imported/jump.png-e7f9f77f861958b8377212a24b2d3299.ctex"]
+source_file="res://Assets/Inimigo_3/SLIME-ALIEN-WALK.png"
+dest_files=["res://.godot/imported/SLIME-ALIEN-WALK.png-e9d777736f8aa5375270a6f101068418.ctex"]
 
 [params]
 

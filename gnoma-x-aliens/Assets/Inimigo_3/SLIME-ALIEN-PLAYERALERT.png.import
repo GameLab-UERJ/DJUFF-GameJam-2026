@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfn8muvgfjq5y"
-path="res://.godot/imported/death.png-ee9e9a87579e8bf4d80441a887b0a6fa.ctex"
+uid="uid://b7ctgfagwyurk"
+path="res://.godot/imported/SLIME-ALIEN-PLAYERALERT.png-9db27df70fbeb069b32b9cb6225f2f15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/player/death.png"
-dest_files=["res://.godot/imported/death.png-ee9e9a87579e8bf4d80441a887b0a6fa.ctex"]
+source_file="res://Assets/Inimigo_3/SLIME-ALIEN-PLAYERALERT.png"
+dest_files=["res://.godot/imported/SLIME-ALIEN-PLAYERALERT.png-9db27df70fbeb069b32b9cb6225f2f15.ctex"]
 
 [params]
 

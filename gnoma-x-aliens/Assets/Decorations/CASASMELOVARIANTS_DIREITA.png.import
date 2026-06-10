@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1cjpbri6yop3"
-path="res://.godot/imported/walk.png-7ff19bd7e1061f4974478fae2948b115.ctex"
+uid="uid://ccsefj0uho7li"
+path="res://.godot/imported/CASASMELOVARIANTS_DIREITA.png-867146ce910e12f04ce8cc583c150419.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/player/walk.png"
-dest_files=["res://.godot/imported/walk.png-7ff19bd7e1061f4974478fae2948b115.ctex"]
+source_file="res://Assets/Decorations/CASASMELOVARIANTS_DIREITA.png"
+dest_files=["res://.godot/imported/CASASMELOVARIANTS_DIREITA.png-867146ce910e12f04ce8cc583c150419.ctex"]
 
 [params]
 
