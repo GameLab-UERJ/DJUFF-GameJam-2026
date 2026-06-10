@@ -2,7 +2,7 @@ extends Node
 
 var collision_layer_values : Dictionary = {}
 var collision_layer_bits : Dictionary = {}
-
+var current_scene : PackedScene = preload("uid://d4b7cvgy38tpi")
 
 func _ready():
 	for i in range(1, 33):

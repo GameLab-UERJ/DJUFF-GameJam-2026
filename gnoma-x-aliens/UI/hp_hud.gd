@@ -32,6 +32,7 @@ func health_change() -> void:
 	if health_count < 1:
 		game_over.emit()
 		return
+	
 	health_count = clamp(health_count - 1, 0, 3)
 	
 	for i in range(health.size()):
