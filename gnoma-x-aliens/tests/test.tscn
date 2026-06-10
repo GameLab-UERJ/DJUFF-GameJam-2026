@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dwu6su4jrcwp"]
 
 [ext_resource type="Script" uid="uid://dd3j27v4gji06" path="res://tests/test.gd" id="1_dsb46"]
-[ext_resource type="PackedScene" uid="uid://c1hf03xh6nw4q" path="res://Entities/platforms/plataforma.tscn" id="1_eig8f"]
+[ext_resource type="PackedScene" uid="uid://c1hf03xh6nw4q" path="res://Entities/platforms/static_platform.tscn" id="1_eig8f"]
 [ext_resource type="PackedScene" uid="uid://bmebh8syonlju" path="res://Entities/player/player.tscn" id="1_yggfj"]
 [ext_resource type="PackedScene" uid="uid://bb0vxy7wwjwik" path="res://Levels/jogo_inicial.tscn" id="2_jenrn"]
 [ext_resource type="PackedScene" uid="uid://bnpbqocg0cvdl" path="res://Entities/shooting/bubble.tscn" id="3_7517i"]

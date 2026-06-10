@@ -70,20 +70,18 @@ animations = [{
 radius = 1.9999998
 height = 80.0
 
-[node name="Node2D" type="Node2D" unique_id=1973717687]
-
-[node name="Nave_alien" type="StaticBody2D" parent="." unique_id=380232047]
+[node name="Nave_alien" type="AnimatableBody2D" unique_id=655383698]
 collision_layer = 2
 collision_mask = 3
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Nave_alien" unique_id=1002214466]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1002214466]
 position = Vector2(5, 16)
 sprite_frames = SubResource("SpriteFrames_36383")
 animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.5105976
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave_alien" unique_id=99794962]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=99794962]
 position = Vector2(3, -3)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ihnvd")
