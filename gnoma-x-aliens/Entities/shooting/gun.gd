@@ -13,6 +13,9 @@ var _projectile_pool : Array[Projectile] = []
 var _available_projectiles: Array[int]   = []
 
 
+@onready var shoot_sfx: AudioStreamPlayer2D = $ShootSfx
+
+
 func _ready() -> void:
 	var bullets : Node2D = get_tree().current_scene.get_node_or_null("Projectiles")
 	if not bullets:
@@ -38,6 +41,7 @@ func shoot_to(direction : Vector2) -> void:
 	projectile.scale = projectile_scale
 	projectile.is_from_player = gun_is_from_player
 	projectile.enabled = true
+	shoot_sfx.play()
 
 
 func shoot_at(node : Node2D) -> void:
