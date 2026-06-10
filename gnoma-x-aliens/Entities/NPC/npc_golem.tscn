@@ -73,10 +73,19 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1xf3g"]
-font_size = 48
+font_size = 24
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_gqtn2"]
+font_size = 8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqtn2"]
+size = Vector2(78, 42)
+
 [node name="NPC_Golem_1" type="StaticBody2D" unique_id=998401793]
+process_mode = 3
+collision_layer = 32
+collision_mask = 2
 script = ExtResource("1_gqtn2")
 
 [node name="Collision_Golem" type="CollisionShape2D" parent="." unique_id=1614844062]
@@ -92,14 +101,13 @@ autoplay = "idle"
 frame_progress = 0.49974734
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1343569817]
-visible = false
 
 [node name="Dialogue_Box" type="TextureRect" parent="CanvasLayer" unique_id=287675235]
-offset_left = 18.000023
-offset_top = 426.00006
-offset_right = 318.00003
-offset_bottom = 484.00006
-scale = Vector2(3.7, 3.7)
+offset_left = 1.0000002
+offset_top = 260.0
+offset_right = 301.0
+offset_bottom = 318.0
+scale = Vector2(1.6620836, 1.6620836)
 texture = ExtResource("2_gqtn2")
 
 [node name="NPC_Face" type="TextureRect" parent="CanvasLayer/Dialogue_Box" unique_id=693016402]
@@ -111,17 +119,27 @@ offset_bottom = 51.081062
 texture = ExtResource("4_qlglv")
 
 [node name="Dialogue_Label" type="Label" parent="CanvasLayer" unique_id=769701415]
-offset_left = 214.0
-offset_top = 476.0
-offset_right = 1104.0
-offset_bottom = 605.0
+offset_left = 91.0
+offset_top = 277.0
+offset_right = 447.0
+offset_bottom = 345.0
 text = "Olá, sou o golem protetor."
 label_settings = SubResource("LabelSettings_1xf3g")
 autowrap_mode = 2
 
 [node name="Name_Label" type="Label" parent="CanvasLayer" unique_id=281457044]
-offset_left = 47.0
-offset_top = 428.0
-offset_right = 268.0
-offset_bottom = 451.0
+offset_left = 10.0
+offset_top = 261.0
+offset_right = 129.0
+offset_bottom = 273.0
 text = "Golem Protetor"
+label_settings = SubResource("LabelSettings_gqtn2")
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=1837737150]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Area" type="CollisionShape2D" parent="InteractArea" unique_id=804379616]
+position = Vector2(19, -1)
+shape = SubResource("RectangleShape2D_gqtn2")
+debug_color = Color(2.7434528e-06, 0.6449158, 0.27753723, 0.41960785)

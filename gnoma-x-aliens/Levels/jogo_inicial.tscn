@@ -369,6 +369,7 @@ position = Vector2(1175, 496)
 
 [node name="NPC_Golem_2" parent="NPC" unique_id=689073392 instance=ExtResource("7_f3krg")]
 position = Vector2(1244, 497)
+dialogue_list = Array[String](["ola", "hello", "ola"])
 
 [node name="Plataforms" type="Node" parent="." unique_id=1467625818]
 

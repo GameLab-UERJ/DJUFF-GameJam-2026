@@ -12,6 +12,7 @@
 script = ExtResource("1_dsb46")
 
 [node name="Jogo_inicial" parent="." unique_id=1382297692 instance=ExtResource("2_jenrn")]
+position = Vector2(2770, -338)
 
 [node name="Plataforma" parent="." unique_id=1847397177 instance=ExtResource("1_eig8f")]
 position = Vector2(541.4359, 577.9987)
@@ -27,7 +28,7 @@ position = Vector2(181, 375)
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=692210525]
 
 [node name="Plataforma3" parent="." unique_id=1540885473 instance=ExtResource("1_eig8f")]
-position = Vector2(790, 409)
+position = Vector2(800, 409)
 
 [node name="Bubble" parent="." unique_id=125904131 instance=ExtResource("3_7517i")]
 position = Vector2(470.17508, 341.56348)
