@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-signal boss_died
-
 # Enum para os estados do Boss
 enum BossState {
 	IDLE,
@@ -329,7 +327,6 @@ func _on_animation_finished() -> void:
 		go_to_walk_state()
 	elif current_state == BossState.DEAD:
 		print("Animação de morte finalizada. Removendo boss da cena...")
-		boss_died.emit()
 		queue_free()
 
 # Colisões
