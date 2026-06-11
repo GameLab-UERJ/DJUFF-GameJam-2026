@@ -276,11 +276,10 @@ tile_set = SubResource("TileSet_k1uva")
 [node name="NPC" type="Node" parent="." unique_id=1893269046]
 
 [node name="NPC_Golem_1" parent="NPC" unique_id=998401793 instance=ExtResource("6_a5062")]
-position = Vector2(1175, 496)
+position = Vector2(1215, 496)
 
 [node name="NPC_Golem_2" parent="NPC" unique_id=689073392 instance=ExtResource("7_f3krg")]
-position = Vector2(1244, 497)
-dialogue_list = Array[String](["ola", "hello", "ola"])
+position = Vector2(4213, 352)
 
 [node name="Plataforms" type="Node" parent="." unique_id=1467625818]
 
@@ -342,8 +341,8 @@ motion_mirroring = Vector2(288, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/ParallaxBackground/5" unique_id=1160636460]
 texture_repeat = 3
-position = Vector2(3, 1.9999981)
-scale = Vector2(1.818465, 1.8640006)
+position = Vector2(0, 1.9999981)
+scale = Vector2(1.8236736, 1.8640006)
 texture = ExtResource("11_a5062")
 centered = false
 region_enabled = true
@@ -411,7 +410,7 @@ position = Vector2(487, 772)
 position = Vector2(1076, 772)
 
 [node name="SwordEnemy" parent="." unique_id=2057063767 instance=ExtResource("16_bmssw")]
-position = Vector2(-1013, 688)
+position = Vector2(-1050, 691)
 
 [node name="SwordEnemy2" parent="." unique_id=358742049 instance=ExtResource("16_bmssw")]
 position = Vector2(985, 741)

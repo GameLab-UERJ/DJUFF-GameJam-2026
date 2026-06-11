@@ -73,16 +73,14 @@ font_size = 48
 font_color = Color(0, 0, 0, 1)
 
 [node name="NPC_Golem_2" unique_id=998401793 instance=ExtResource("1_dktoj")]
+dialogue_title = "golem2"
 
 [node name="Animation_Golem" parent="." index="1" unique_id=37047788]
 sprite_frames = SubResource("SpriteFrames_ocquk")
 frame_progress = 0.47870252
 
-[node name="CanvasLayer" parent="." index="2" unique_id=1343569817]
-visible = false
-
 [node name="NPC_Face" parent="CanvasLayer/Dialogue_Box" parent_id_path=PackedInt32Array(287675235) index="0" unique_id=693016402]
 texture = ExtResource("3_lmias")
 
-[node name="Dialogue_Label" parent="CanvasLayer" index="1" unique_id=769701415]
+[node name="Dialogue_Label" parent="CanvasLayer" parent_id_path=PackedInt32Array(1343569817) index="1" unique_id=769701415]
 label_settings = SubResource("LabelSettings_1aet0")
