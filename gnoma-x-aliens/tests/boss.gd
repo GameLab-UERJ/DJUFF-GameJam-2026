@@ -159,7 +159,7 @@ func _end_dialogue() -> void:
 
 func _input(event: InputEvent) -> void:
 	if not dialogue_finished and current_state == BossState.DIALOGUE:
-		if event.is_action_pressed("interact"):
+		if event.is_action_pressed("interact") or event.is_action_released("shoot"):
 			if dialogue_index < dialogue_list.size():
 				dialogue_label.text = dialogue_list[dialogue_index]
 				dialogue_index += 1

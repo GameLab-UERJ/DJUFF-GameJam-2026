@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://h8qhli812hv5" path="res://Assets/BackGround Parallax/1 - Leaf_top.png" id="15_hlg74"]
 [ext_resource type="PackedScene" uid="uid://chotu635406hr" path="res://Entities/enemies/sword_enemy.tscn" id="16_bmssw"]
 [ext_resource type="PackedScene" uid="uid://lhf0bmr84vtj" path="res://Entities/platforms/movable_platform.tscn" id="18_hlg74"]
+[ext_resource type="AudioStream" uid="uid://ckeqdcnpilov6" path="res://Assets/Music/background_cute_adventure_loop.wav" id="22_njptj"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_22bof"]
 tile_data = PackedInt32Array(0, 393216, 2, 65536, 393216, 3, 1, 458752, 2, 2, 65536, 0)
@@ -451,6 +452,10 @@ offset_bottom = 345.0
 text = "Olá, sou o golem protetor."
 label_settings = SubResource("LabelSettings_uv1gx")
 autowrap_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1620915873]
+stream = ExtResource("22_njptj")
+volume_db = -10.0
 
 [connection signal="game_over" from="HP_HUD" to="." method="game_over"]
 [connection signal="body_entered" from="GoToBoss" to="GoToBoss" method="_on_body_entered"]

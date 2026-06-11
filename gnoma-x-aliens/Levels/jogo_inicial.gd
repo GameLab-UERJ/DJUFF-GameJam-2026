@@ -1,17 +1,19 @@
 extends Node2D
 
-const gameplay_music = preload("uid://ckeqdcnpilov6")
+var gameplay_music = load("uid://ckeqdcnpilov6")
 
 @onready var hp_hud: CanvasLayer = $HP_HUD
 @onready var player: Player = $Player
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
+	MenuMusic.stop()
 	if name == "JogoInicial":
 		Util.current_scene = load("uid://bb0vxy7wwjwik")
-		MenuMusic.play_scene_music(gameplay_music, -10)
+		audio_stream_player.play()
+		print('here')
 	elif name == "BossFight":
 		Util.current_scene = load("uid://c81l0hulr32gg")
-		MenuMusic.stop()
 
 
 func game_over() -> void:
