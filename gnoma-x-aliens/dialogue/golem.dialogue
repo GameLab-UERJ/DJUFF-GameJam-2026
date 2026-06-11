@@ -7,8 +7,6 @@ Golem1: Pequena gnoma... estou surpreso que alguém sobreviveu à invasão... ve
 - Estou procurando meus vizinhos.
 	Golem1: Então não pare. Os invasores seguem para o leste. Sinto que a sua determinação brilha mais forte que qualquer cristal.
 	=> golem1_fim
-- Repetir diálogo => golem1
-- Sair da conversa => END
 
 ~ golem1_fim
 Golem1: Desejo sorte em sua jornada, pequena gnoma.
@@ -28,8 +26,6 @@ Golem2: Espere, viajante. Antes de seguir adiante, há algo que deve saber.
 	Golem2: Meu corpo está desgastado e meu núcleo quase sem energia.
 	Golem2: Tudo o que posso fazer é alertar aqueles que ainda têm forças para resistir.
 	=> golem2_boss
-- Repetir diálogo => golem2
-- Sair da conversa => END
 
 ~ golem2_boss
 Golem2: O guardião protege a passagem adiante.

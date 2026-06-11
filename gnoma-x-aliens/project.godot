@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 DialogueManager="*uid://c3rodes2l3gxb"
 EasyTransition="*uid://cq0t7o8xelk4k"
 Util="*uid://cvxgn7f5q8wcx"
-MenuMusic="*uid://7blvup3odqaf"
+MenuMusic="*uid://bj3nu5ly65yta"
 
 [dialogue_manager]
 

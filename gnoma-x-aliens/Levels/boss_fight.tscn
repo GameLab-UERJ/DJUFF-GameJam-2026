@@ -181,7 +181,7 @@ centered = false
 position = Vector2(578, 245)
 
 [node name="Player" parent="." unique_id=1459404749 instance=ExtResource("4_jdiin")]
-position = Vector2(914, 268)
+position = Vector2(23.16265, 278.245)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1326629785]
 position = Vector2(-30, -268)
@@ -195,6 +195,7 @@ position = Vector2(981.00006, 256)
 is_final = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=527022960]
+visible = false
 
 [node name="Dialogue_Box" type="TextureRect" parent="CanvasLayer" unique_id=2114784049]
 offset_left = 1.0000002

@@ -26,6 +26,7 @@ func _ready() -> void:
 
 func _on_new_game_pressed() -> void:
 	_press_sound()
+	MenuMusic.stop()
 	EasyTransition.transition_to_path(game_start,1.0,EasyTransition.TransitionAnim.BLUR)
 
 
