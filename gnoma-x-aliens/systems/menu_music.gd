@@ -7,8 +7,8 @@ func _play_music(music: AudioStream, volume: float = 0.0) -> void:
 		return
 	
 	stream = music
-	volume_db = volume_db
+	volume_db = volume
 	play()
 
 func play_scene_music(music: AudioStream = menu_music, volume: float = 0.0) -> void:
-	_play_music(music)
+	_play_music(music, volume)
