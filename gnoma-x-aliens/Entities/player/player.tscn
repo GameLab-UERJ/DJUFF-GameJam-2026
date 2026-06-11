@@ -257,6 +257,7 @@ visible = false
 position = Vector2(26.129082, -25.41243)
 projectile_speed = 300.0
 projectile_scale = Vector2(1, 1)
+projectile_time_alive = 1.0
 
 [node name="Markers" type="Node2D" parent="." unique_id=1335226324]
 
