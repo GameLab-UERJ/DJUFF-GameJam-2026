@@ -5,6 +5,7 @@ class_name Boss
 signal boss_position_updated(boss_position: Vector2)
 signal boss_damaged(current_health: int, max_health: int)
 signal boss_died(final_position: Vector2)
+signal boss_dead_animation_finished()  # NOVO SINAL
 
 
 enum BossState {
@@ -27,6 +28,7 @@ enum BossState {
 @onready var ground_detector: RayCast2D = $Ground_Detector
 @onready var player_back: RayCast2D = $Player_Back
 @onready var fake_wall: TileMapLayer = $"../FakeWall"
+@onready var door: Node2D = $"../Porta"  # REFERÊNCIA DA PORTA (ajuste o caminho)
 @onready var attack_1_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/attack1"
 @onready var attack_2_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/attack2"
 @onready var dead_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/dead"
@@ -47,7 +49,7 @@ var current_health: int = max_health
 var player: Player
 
 const WALK_SPEED: float = 90.0
-const ATTACK_1_SPEED: float = 200.0
+const ATTACK_1_SPEED: float = 250.0
 const ATTACK_2_SPEED: float = 35.0
 
 var idle_timer: Timer
@@ -374,7 +376,18 @@ func _on_animation_finished() -> void:
 		_clear_attacks()
 		go_to_walk_state()
 	elif current_state == BossState.DEAD:
+		# SÓ LIBERA A PORTA DEPOIS DA ANIMAÇÃO DE MORTE
+		_open_door()
 		queue_free()
+
+func _open_door() -> void:
+	# Emite sinal de que a animação de morte terminou
+	boss_dead_animation_finished.emit()
+	
+	# Abre a porta (se tiver referência)
+	if door:
+		door.queue_free()  # Remove a porta
+		print("PORTA ABERTA!")
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	take_damage(1)
