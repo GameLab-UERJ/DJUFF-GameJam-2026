@@ -13,6 +13,7 @@ const SHIFTED_SPRITES_POSITION_RIGHT: Vector2 = Vector2(20,-36)
 var detected_player : Player
 var player : Player
 var damaging_player : bool
+var is_dead : bool = false  # NOVO
 
 var is_facing_right : bool = false:
 	set(value):
@@ -32,6 +33,7 @@ var is_facing_right : bool = false:
 @onready var transform_sfx: AudioStreamPlayer2D = $SoundEffects/TransformSfx
 @onready var spawn_sfx: AudioStreamPlayer2D = $SoundEffects/SpawnSfx
 @onready var attack_sfx: AudioStreamPlayer2D = $SoundEffects/AttackSfx
+@onready var dead_sfx: AudioStreamPlayer2D = $SoundEffects/dead_sfx
 
 
 func _ready() -> void:
@@ -39,6 +41,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if is_dead:
+		return
 	update_facing()
 
 
@@ -71,6 +75,9 @@ func position_sprites(animation : String) -> void:
 
 
 func play_animation(animation : String, backwards : bool = false) -> void:
+	if is_dead and animation != "dead":
+		return
+	
 	if sprites.sprite_frames.get_animation_names().find(animation) == -1:
 		return
 	
@@ -80,6 +87,21 @@ func play_animation(animation : String, backwards : bool = false) -> void:
 		sprites.play_backwards(animation)
 	else:
 		sprites.play(animation)
+
+
+# NOVO: Função para receber dano
+func take_damage(_damage_amount: int = 1) -> void:
+	if is_dead:
+		return
+	
+	is_dead = true
+	damaging_player = false
+	player = null
+	detected_player = null
+	
+	play_animation("dead")
+	if dead_sfx:
+		dead_sfx.play()
 
 
 func _on_damage_area_body_entered(body: Node2D) -> void:
@@ -116,6 +138,8 @@ func _on_sprites_frame_changed() -> void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	match sprites.animation:
+		"dead":  # NOVO
+			queue_free()
 		"transform":
 			if not detected_player:
 				play_animation("idle")
@@ -132,11 +156,15 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_detect_area_body_entered(body: Node2D) -> void:
+	if is_dead:
+		return
 	detected_player = body as Player
 	if sprites.animation == "idle" or sprites.animation == "transform":
 		play_animation("transform")
 
 
 func _on_detect_area_body_exited(_body: Node2D) -> void:
+	if is_dead:
+		return
 	detected_player = null
 	play_animation("transform",true)

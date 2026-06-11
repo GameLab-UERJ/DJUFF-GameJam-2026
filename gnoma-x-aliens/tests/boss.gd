@@ -2,10 +2,9 @@ extends CharacterBody2D
 class_name Boss
 
 
-signal boss_position_updated(boss_position: Vector2)
 signal boss_damaged(current_health: int, max_health: int)
 signal boss_died(final_position: Vector2)
-signal boss_dead_animation_finished()  # NOVO SINAL
+signal boss_dead_animation_finished()
 
 
 enum BossState {
@@ -26,15 +25,15 @@ enum BossState {
 @onready var attack2_collision: CollisionShape2D = $Attack_2/Attack2Hitbox
 @onready var wall_detector: RayCast2D = $Wall_Detector
 @onready var ground_detector: RayCast2D = $Ground_Detector
-@onready var player_back: RayCast2D = $Player_Back
 @onready var fake_wall: TileMapLayer = $"../FakeWall"
-@onready var door: Node2D = $"../Porta"  # REFERÊNCIA DA PORTA (ajuste o caminho)
+@onready var door: Node2D = get_parent().get_node_or_null("Porta")
 @onready var attack_1_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/attack1"
 @onready var attack_2_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/attack2"
 @onready var dead_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/dead"
 @onready var walk_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/walk"
 @onready var hit_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/hit"
-
+@onready var ataqueatras: Area2D = $ataqueatras
+@onready var playeratras: Area2D = $Playeratras
 @onready var canvas: CanvasLayer = $"../CanvasLayer"
 @onready var dialogue_label: Label = $"../CanvasLayer/Dialogue_Label"
 
@@ -49,7 +48,7 @@ var current_health: int = max_health
 var player: Player
 
 const WALK_SPEED: float = 90.0
-const ATTACK_1_SPEED: float = 250.0
+const ATTACK_1_SPEED: float = 400
 const ATTACK_2_SPEED: float = 35.0
 
 var idle_timer: Timer
@@ -69,6 +68,10 @@ const DAMAGE_COOLDOWN_TIME: float = 0.3
 var dialogue_index: int = 0
 var dialogue_finished: bool = false
 
+# Variáveis para as áreas de detecção
+var player_in_atras: bool = false
+var player_in_ataqueatras: bool = false
+
 @export var dialogue_list: Array[String] = [
 	"Você ousou me desafiar?",
 	"Eu sou o guardião deste lugar!",
@@ -79,8 +82,6 @@ var dialogue_finished: bool = false
 func _ready() -> void:
 	start_position = global_position
 	current_health = max_health
-	
-	player_back.enabled = true
 	
 	idle_timer = Timer.new()
 	idle_timer.one_shot = true
@@ -97,6 +98,13 @@ func _ready() -> void:
 	attack_1.body_exited.connect(_on_attack_area_body_exited)
 	attack_2.body_entered.connect(_on_attack_area_body_entered)
 	attack_2.body_exited.connect(_on_attack_area_body_exited)
+	
+	# Conecta as áreas de detecção
+	playeratras.body_entered.connect(_on_player_atras_entered)
+	playeratras.body_exited.connect(_on_player_atras_exited)
+	ataqueatras.body_entered.connect(_on_ataque_atras_entered)
+	ataqueatras.body_exited.connect(_on_ataque_atras_exited)
+	
 	anim.animation_finished.connect(_on_animation_finished)
 	anim.frame_changed.connect(_on_frame_changed)
 	
@@ -108,7 +116,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	if current_state != BossState.DIALOGUE and dialogue_finished:
-		_check_player_back()
+		_check_back_areas()
 	
 	match current_state:
 		BossState.DIALOGUE:
@@ -129,15 +137,25 @@ func _physics_process(delta: float) -> void:
 func _start_dialogue() -> void:
 	current_state = BossState.DIALOGUE
 	anim.play("idle")
-	canvas.visible = true
+	if canvas:
+		canvas.visible = true
 	get_tree().paused = true
 	dialogue_index = 0
 	
 	if dialogue_list.size() > 0:
-		dialogue_label.text = dialogue_list[dialogue_index]
+		if dialogue_label:
+			dialogue_label.text = dialogue_list[dialogue_index]
 		dialogue_index += 1
 	else:
 		_end_dialogue()
+
+func _end_dialogue() -> void:
+	if canvas:
+		canvas.visible = false
+	get_tree().paused = false
+	dialogue_finished = true
+	dialogue_index = 0
+	go_to_walk_state()
 
 func _input(event: InputEvent) -> void:
 	if not dialogue_finished and current_state == BossState.DIALOGUE:
@@ -148,26 +166,38 @@ func _input(event: InputEvent) -> void:
 			else:
 				_end_dialogue()
 
-func _end_dialogue() -> void:
-	canvas.visible = false
-	get_tree().paused = false
-	dialogue_finished = true
-	dialogue_index = 0
-	go_to_walk_state()
 
-func _check_player_back() -> void:
+# Callbacks das áreas de detecção
+func _on_player_atras_entered(body: Node2D) -> void:
+	if body is Player:
+		player_in_atras = true
+
+func _on_player_atras_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_atras = false
+
+func _on_ataque_atras_entered(body: Node2D) -> void:
+	if body is Player:
+		player_in_ataqueatras = true
+
+func _on_ataque_atras_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_ataqueatras = false
+
+func _check_back_areas() -> void:
 	if is_dead:
 		return
 	
 	if current_state == BossState.ATTACK_1 or current_state == BossState.ATTACK_2:
 		return
 	
-	player_back.force_raycast_update()
-	
-	if player_back.is_colliding():
-		var collider = player_back.get_collider()
-		if collider is Player:
-			_flip()
+	# AMBOS: vira E ataca com attack 2
+	if player_in_atras and player_in_ataqueatras:
+		_flip()
+		go_to_attack2_state()
+	# SÓ playeratras: apenas vira
+	elif player_in_atras:
+		_flip()
 
 func _handle_walk_movement() -> void:
 	if not can_flip:
@@ -182,9 +212,17 @@ func _handle_attack1_movement() -> void:
 	if anim.frame <= 4:
 		velocity.x = 0
 		return
+	
 	if not can_flip:
 		return
-	velocity.x = ATTACK_1_SPEED * direction
+	
+	if anim.frame >= 5 and anim.frame <= 11:
+		velocity.x = ATTACK_1_SPEED * direction
+	elif anim.frame >= 12 and anim.frame <= 16:
+		velocity.x = WALK_SPEED * direction
+	else:
+		velocity.x = WALK_SPEED * direction
+	
 	if wall_detector.is_colliding():
 		_flip()
 	elif not ground_detector.is_colliding():
@@ -202,7 +240,7 @@ func _flip() -> void:
 func _on_frame_changed() -> void:
 	match current_state:
 		BossState.ATTACK_1:
-			if anim.frame >= 5 and anim.frame <= 9:
+			if anim.frame >= 5 and anim.frame <= 11:
 				_show_attack1()
 			else:
 				_hide_attack1()
@@ -376,20 +414,17 @@ func _on_animation_finished() -> void:
 		_clear_attacks()
 		go_to_walk_state()
 	elif current_state == BossState.DEAD:
-		# SÓ LIBERA A PORTA DEPOIS DA ANIMAÇÃO DE MORTE
 		_open_door()
 		queue_free()
 
 func _open_door() -> void:
-	# Emite sinal de que a animação de morte terminou
 	boss_dead_animation_finished.emit()
 	
-	# Abre a porta (se tiver referência)
 	if door:
-		door.queue_free()  # Remove a porta
+		door.queue_free()
 		print("PORTA ABERTA!")
 
-func _on_hitbox_area_entered(area: Area2D) -> void:
+func _on_hitbox_area_entered(_area: Area2D) -> void:
 	take_damage(1)
 
 func heal(amount: int) -> void:
@@ -414,6 +449,8 @@ func reset() -> void:
 	attack_rotation = 0
 	damage_cooldown = false
 	player = null
+	player_in_atras = false
+	player_in_ataqueatras = false
 	dialogue_finished = false
 	dialogue_index = 0
 	canvas.visible = false

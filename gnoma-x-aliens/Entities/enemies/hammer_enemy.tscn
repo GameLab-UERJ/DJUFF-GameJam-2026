@@ -9,11 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://c3ufk0fqpj1ma" path="res://Assets/Inimigo_2/ALIENATTACKTHOrATTACK.png" id="7_yj4sx"]
 [ext_resource type="Texture2D" uid="uid://b4r6vxddstn7w" path="res://Assets/Inimigo_2/SLIME-ALIEN-IDLE.png" id="8_mho3b"]
 [ext_resource type="Texture2D" uid="uid://bpbm5jc00b1hw" path="res://Assets/Inimigo_2/SLIME-ALIEN-IDLE-TRANSFORM.png" id="9_a7ei4"]
+[ext_resource type="Texture2D" uid="uid://xolastfakqci" path="res://Assets/Inimigo_2/slimedead-Sheet.png" id="9_ida0t"]
 [ext_resource type="Texture2D" uid="uid://dy3tp0jegoxrk" path="res://Assets/Inimigo_2/SLIME-ALIEN-WALK.png" id="10_t2bop"]
 [ext_resource type="AudioStream" uid="uid://diwkos2rauu7n" path="res://Assets/sfx/alert.wav" id="10_vhrfs"]
 [ext_resource type="AudioStream" uid="uid://q5wdrra46oaj" path="res://Assets/sfx/derrickmckinnon-keys-falling-on-ground-283265.mp3" id="11_44t6s"]
 [ext_resource type="AudioStream" uid="uid://dlpt0rvt1tv6h" path="res://Assets/sfx/freesound_community-spawn-sound-43782.mp3" id="12_m25or"]
 [ext_resource type="AudioStream" uid="uid://brh3ps8prjk0r" path="res://Assets/sfx/u_q2hb2391vb-thunder-clap-521194.mp3" id="14_0r0mq"]
+[ext_resource type="AudioStream" uid="uid://dxalxkvb7fipl" path="res://Assets/sfx/data_pion-sfx34-stomp-534302 (1).mp3" id="16_yj4sx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wtdmc"]
 atlas = ExtResource("5_0r0mq")
@@ -179,6 +181,30 @@ region = Rect2(1248, 0, 96, 96)
 atlas = ExtResource("7_yj4sx")
 region = Rect2(1344, 0, 96, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj4sx"]
+atlas = ExtResource("9_a7ei4")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mho3b"]
+atlas = ExtResource("9_ida0t")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7ei4"]
+atlas = ExtResource("9_ida0t")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2bop"]
+atlas = ExtResource("9_ida0t")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xreyi"]
+atlas = ExtResource("9_ida0t")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osmqg"]
+atlas = ExtResource("9_ida0t")
+region = Rect2(160, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ygsw"]
 atlas = ExtResource("8_mho3b")
 region = Rect2(0, 0, 32, 32)
@@ -315,7 +341,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"alert",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -401,7 +427,30 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 16.0
+"speed": 22.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj4sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mho3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7ei4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2bop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xreyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osmqg")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -491,7 +540,7 @@ size = Vector2(259, 150)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_nhm7x")
-damage_player_range = Vector2i(18, 22)
+damage_player_range = Vector2i(18, 23)
 health = 3
 metadata/_custom_type_script = "uid://d2n53aah088pb"
 
@@ -506,7 +555,7 @@ state_machine = ExtResource("4_yj4sx")
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=544897740]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_h4x1u")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
 flip_h = true
 
@@ -547,6 +596,25 @@ stream = ExtResource("12_m25or")
 [node name="AttackSfx" type="AudioStreamPlayer2D" parent="SoundEffects" unique_id=1004887187]
 stream = ExtResource("14_0r0mq")
 volume_db = -12.0
+
+[node name="dead_sfx" type="AudioStreamPlayer2D" parent="SoundEffects" unique_id=513119449]
+stream = ExtResource("16_yj4sx")
+pitch_scale = 0.5
+
+[node name="Wall_Detector" type="RayCast2D" parent="." unique_id=472349299]
+position = Vector2(0, -2)
+target_position = Vector2(15, 0)
+collision_mask = 2
+
+[node name="Ground_Detector" type="RayCast2D" parent="." unique_id=374649331]
+position = Vector2(13, 0)
+target_position = Vector2(0, 17)
+collision_mask = 2
+
+[node name="Ground_Detector2" type="RayCast2D" parent="." unique_id=1756595424]
+position = Vector2(-13, 0)
+target_position = Vector2(0, 17)
+collision_mask = 2
 
 [connection signal="animation_finished" from="Sprites" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="Sprites" to="." method="_on_sprites_frame_changed"]

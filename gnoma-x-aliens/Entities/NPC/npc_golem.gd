@@ -38,6 +38,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		player.movement_component.enabled = false
 
+
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		can_interact = true
@@ -56,7 +57,7 @@ func _on_victory() -> void:
 	EasyTransition.transition_to_path("res://menus/victory_menu/victory_menu.tscn",1,EasyTransition.TransitionAnim.TEXTURE_LUMINANCE)
 
 
-func _on_dialogue_finished(dialogue : DialogueResource) -> void:
+func _on_dialogue_finished(_dialogue : DialogueResource) -> void:
 	if is_final:
 		_on_victory()
 		

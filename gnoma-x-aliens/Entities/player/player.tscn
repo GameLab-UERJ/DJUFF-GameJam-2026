@@ -284,15 +284,16 @@ shape = SubResource("CapsuleShape2D_5udp2")
 
 [node name="FootstepsPlayer" type="AudioStreamPlayer2D" parent="SfxPlayers" unique_id=428375398]
 stream = ExtResource("8_26q78")
+volume_db = 12.0
 pitch_scale = 0.8
 
 [node name="JumpPlayer" type="AudioStreamPlayer2D" parent="SfxPlayers" unique_id=2109210640]
 stream = ExtResource("9_bectd")
-volume_db = 5.0
+volume_db = 18.0
 
 [node name="LandPlayer" type="AudioStreamPlayer2D" parent="SfxPlayers" unique_id=276985743]
 stream = ExtResource("10_wvtmh")
-volume_db = 10.0
+volume_db = 12.0
 pitch_scale = 0.5
 
 [node name="TookDamageTimer" type="Timer" parent="." unique_id=511371604]

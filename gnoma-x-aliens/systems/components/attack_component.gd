@@ -20,7 +20,7 @@ func _physics_process(_delta: float) -> void:
 	if not cooldown.is_stopped():
 		return
 	
-	if parent is Player:
+	if parent is Player and not parent._is_dead:
 		if Input.is_action_pressed("shoot"):
 			var direction : Vector2
 			if parent.base_sprite.flip_h:
