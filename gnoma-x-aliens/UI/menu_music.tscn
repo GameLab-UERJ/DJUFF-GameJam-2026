@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://7blvup3odqaf"]
 
-[ext_resource type="Script" uid="uid://bj3nu5ly65yta" path="res://UI/menu_music.gd" id="1_w1pjb"]
+[ext_resource type="Script" uid="uid://bj3nu5ly65yta" path="res://systems/menu_music.gd" id="1_w1pjb"]
 
 [node name="Menu_music" type="AudioStreamPlayer" unique_id=1373605468]
 volume_db = -8.0

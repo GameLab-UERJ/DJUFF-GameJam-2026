@@ -2,12 +2,13 @@ extends AudioStreamPlayer
 
 const menu_music = preload("uid://rm0u1kbm1oxv")
 
-func _play_music(music: AudioStream) -> void:
+func _play_music(music: AudioStream, volume: float = 0.0) -> void:
 	if stream == music:
 		return
 	
-	stream = menu_music
+	stream = music
+	volume_db = volume_db
 	play()
 
-func play_scene_music() -> void:
-	_play_music(menu_music)
+func play_scene_music(music: AudioStream = menu_music, volume: float = 0.0) -> void:
+	_play_music(music)
