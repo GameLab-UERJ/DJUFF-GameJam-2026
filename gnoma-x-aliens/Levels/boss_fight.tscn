@@ -183,6 +183,8 @@ centered = false
 [node name="Boss" parent="." unique_id=1565506577 instance=ExtResource("3_m5pgt")]
 process_mode = 3
 position = Vector2(578, 245)
+max_health = 60
+dialogue_list = Array[String](["Você ousou me desafiar?", "Eu sou o guardião deste lugar!", "Ninguém nunca me derrotou...", "Prepare-se para a batalha!"])
 
 [node name="Player" parent="." unique_id=1459404749 instance=ExtResource("4_jdiin")]
 position = Vector2(16, 279)
