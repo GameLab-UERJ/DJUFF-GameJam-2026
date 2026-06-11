@@ -9,7 +9,6 @@ var main_menu: String = "uid://d4b7cvgy38tpi"
 
 @onready var press_audio: AudioStreamPlayer = $PressAudio
 @onready var hover_audio: AudioStreamPlayer = $HoverAudio
-@onready var theme_audio: AudioStreamPlayer = $ThemeAudio
 
 @onready var title: RichTextLabel = $Panel/HBoxContainer/VBoxContainer/Title
 @onready var credits: RichTextLabel = $Panel/HBoxContainer/VBoxContainer/Credits

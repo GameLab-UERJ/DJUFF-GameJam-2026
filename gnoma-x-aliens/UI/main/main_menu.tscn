@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cywke7o43c1ej" path="res://Assets/UI/Itch io.png" id="6_mgtqr"]
 [ext_resource type="Texture2D" uid="uid://cfoaesi3tn6m8" path="res://Assets/UI/Discord.png" id="7_mal0d"]
 [ext_resource type="Texture2D" uid="uid://bf70r317k3cm4" path="res://Assets/UI/Instagram.png" id="7_mgtqr"]
-[ext_resource type="AudioStream" uid="uid://rm0u1kbm1oxv" path="res://Assets/Music/Gnoma_Alien_Music.wav" id="10_8gxq7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvk1i"]
 bg_color = Color(0.6, 0.6, 0.6, 0.6745098)
@@ -174,10 +173,6 @@ volume_db = -6.0
 [node name="HoverAudio" type="AudioStreamPlayer" parent="." unique_id=1176570567]
 stream = ExtResource("5_d8c6p")
 volume_db = -6.0
-
-[node name="ThemeAudio" type="AudioStreamPlayer" parent="." unique_id=932111860]
-stream = ExtResource("10_8gxq7")
-volume_db = -8.0
 
 [connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/NewGame" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/NewGame" to="." method="_on_new_game_pressed"]

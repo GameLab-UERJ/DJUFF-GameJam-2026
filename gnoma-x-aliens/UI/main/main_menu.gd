@@ -12,7 +12,6 @@ var link_button: TextureButton
 
 @onready var press_audio: AudioStreamPlayer = $PressAudio
 @onready var hover_audio: AudioStreamPlayer = $HoverAudio
-@onready var theme_audio: AudioStreamPlayer = $ThemeAudio
 
 @onready var title: RichTextLabel = $Panel/HBoxContainer/VBoxContainer/Title
 @onready var new_game: Button = $Panel/HBoxContainer/VBoxContainer/ActionsGridContainer/NewGame
@@ -21,7 +20,7 @@ var link_button: TextureButton
 
 func _ready() -> void:
 	title.text = gnoma + "[font=%s]" % aliens_font + aliens + "[/font]"
-	#theme_audio.play()
+
 	MenuMusic.play_scene_music()
 
 

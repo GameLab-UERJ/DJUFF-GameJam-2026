@@ -9,5 +9,5 @@ func _play_music(music: AudioStream) -> void:
 	stream = menu_music
 	play()
 
-func play_scene_music() -> void:
-	_play_music(menu_music)
+func play_scene_music(music : AudioStream = menu_music) -> void:
+	_play_music(music)
