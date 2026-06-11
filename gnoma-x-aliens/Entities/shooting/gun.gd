@@ -4,6 +4,7 @@ class_name Gun
 
 @export var projectile_scene : PackedScene
 @export var gun_is_from_player : bool = true
+
 @export_group("Projectile","projectile_")
 @export var projectile_speed : float = 200
 @export var projectile_scale : Vector2 = Vector2.ONE*2
