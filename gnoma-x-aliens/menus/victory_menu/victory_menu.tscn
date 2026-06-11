@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://dg8omy1y8exft" path="res://menus/result_menu.gd" id="1_vyiqh"]
 [ext_resource type="PackedScene" uid="uid://bb0vxy7wwjwik" path="res://Levels/jogo_inicial.tscn" id="2_2rxy4"]
 [ext_resource type="FontFile" uid="uid://b31bkh7k0hlq8" path="res://Assets/fonts/Happy Gnome Free Trial.ttf" id="2_m7yqt"]
-[ext_resource type="AudioStream" uid="uid://dobf5y7fgq3ql" path="res://Assets/sfx/Menu/abs-confirm-2.mp3" id="4_32fe5"]
-[ext_resource type="AudioStream" uid="uid://bfjotqjifnphe" path="res://Assets/sfx/Menu/abs-pointer-2.mp3" id="5_hetui"]
-[ext_resource type="AudioStream" uid="uid://rm0u1kbm1oxv" path="res://Assets/Music/Gnoma_Alien_Music.wav" id="6_uy0pf"]
+[ext_resource type="AudioStream" uid="uid://dobf5y7fgq3ql" path="res://Assets/SFX/Menu/abs-confirm-2.mp3" id="4_32fe5"]
+[ext_resource type="AudioStream" uid="uid://bfjotqjifnphe" path="res://Assets/SFX/Menu/abs-pointer-2.mp3" id="5_hetui"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_title"]
 font = ExtResource("2_m7yqt")
@@ -129,7 +128,6 @@ stream = ExtResource("5_hetui")
 volume_db = -6.0
 
 [node name="ThemeAudio" type="AudioStreamPlayer" parent="." unique_id=907359391]
-stream = ExtResource("6_uy0pf")
 volume_db = -8.0
 
 [connection signal="mouse_entered" from="MarginContainer/Content/Buttons/RetryButton" to="." method="_on_mouse_entered"]
