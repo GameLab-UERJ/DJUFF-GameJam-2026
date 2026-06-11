@@ -252,6 +252,10 @@ size = Vector2(27, 26)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_njptj"]
 distance = 128.1477
 
+[sub_resource type="LabelSettings" id="LabelSettings_uv1gx"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
 [node name="JogoInicial" type="Node2D" unique_id=1382297692]
 position = Vector2(2770, -257)
 script = ExtResource("1_cf0mp")
@@ -324,7 +328,7 @@ shape = SubResource("WorldBoundaryShape2D_njptj")
 position = Vector2(-562, 628)
 
 [node name="Player" parent="." unique_id=1459404749 instance=ExtResource("10_5nkjw")]
-position = Vector2(1670.4531, 412.12875)
+position = Vector2(-2736.3472, 766.5553)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1589796336]
 limit_left = 0
@@ -438,6 +442,15 @@ position = Vector2(901, 350)
 
 [node name="Nave_alien5" parent="." unique_id=1380044997 instance=ExtResource("18_hlg74")]
 position = Vector2(1661, 456)
+
+[node name="Dialogue_Label" type="Label" parent="." unique_id=1296827928]
+offset_left = 91.0
+offset_top = 277.0
+offset_right = 447.0
+offset_bottom = 345.0
+text = "Olá, sou o golem protetor."
+label_settings = SubResource("LabelSettings_uv1gx")
+autowrap_mode = 2
 
 [connection signal="game_over" from="HP_HUD" to="." method="game_over"]
 [connection signal="body_entered" from="GoToBoss" to="GoToBoss" method="_on_body_entered"]
