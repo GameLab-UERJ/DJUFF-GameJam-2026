@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://bfjotqjifnphe"
-path="res://.godot/imported/abs-pointer-2.mp3-e180ad069a0040cb7a693d19e495f991.mp3str"
+path="res://.godot/imported/abs-pointer-2.mp3-3d39a5f1a5b8483eb25657e76de69a6b.mp3str"
 
 [deps]
 
-source_file="res://Assets/sfx/Menu/abs-pointer-2.mp3"
-dest_files=["res://.godot/imported/abs-pointer-2.mp3-e180ad069a0040cb7a693d19e495f991.mp3str"]
+source_file="res://Assets/SFX/Menu/abs-pointer-2.mp3"
+dest_files=["res://.godot/imported/abs-pointer-2.mp3-3d39a5f1a5b8483eb25657e76de69a6b.mp3str"]
 
 [params]
 
