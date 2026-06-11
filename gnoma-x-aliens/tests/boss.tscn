@@ -452,7 +452,7 @@ radius = 10.327089
 height = 42.62976
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nbjk1"]
-radius = 5.320015
+radius = 9.090171
 height = 30.668327
 
 [node name="Boss" type="CharacterBody2D" unique_id=1565506577]
@@ -495,6 +495,7 @@ debug_color = Color(0.9286163, 3.3691525e-05, 0.6659409, 0.41960785)
 
 [node name="Attack_1" type="Area2D" parent="." unique_id=1266079489]
 unique_name_in_owner = true
+scale = Vector2(1.1880724, 1.1880724)
 collision_layer = 0
 collision_mask = 4
 
@@ -511,7 +512,7 @@ collision_mask = 4
 
 [node name="Attack2Hitbox" type="CollisionShape2D" parent="Attack_2" unique_id=797672092]
 unique_name_in_owner = true
-position = Vector2(-15.986162, -4.3811903)
+position = Vector2(-19.120705, -4.068248)
 shape = SubResource("CapsuleShape2D_nbjk1")
 debug_color = Color(0.9729484, 0, 0.44080165, 0.41960785)
 
