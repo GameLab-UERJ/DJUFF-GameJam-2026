@@ -6,10 +6,12 @@ signal died
 signal took_damage
 
 
-@export var time_to_fully_dim : float = 15
-
-
 var last_position : Vector2
+var is_in_dialog : bool = false:
+	set(value):
+		is_in_dialog = value
+		if movement_component:
+			movement_component.enabled = not is_in_dialog
 var _is_dead : bool = false
 
 
@@ -52,6 +54,7 @@ func _on_base_sprite_frame_changed() -> void:
 func _on_base_sprite_animation_finished() -> void:
 	match base_sprite.animation:
 		"die":
+			collision_layer ^= Util.collision_layer_values["Player"]
 			died.emit()
 
 

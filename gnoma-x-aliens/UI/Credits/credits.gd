@@ -22,14 +22,14 @@ func _ready() -> void:
 
 	credits.text = \
 	"[rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]" + "Coordinator: " + "[/rainbow]" +\
-	"[font=%s]"  % aliens_font + "\nProfessor Gabriel Carvalho" + "[/font]" +\
+	"[font=%s]"  % aliens_font + "\nGabriel de Carvalho" + "[/font]" +\
 	
 	"[rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]" + "\n\nArt: " + "[/rainbow]" + \
-	"[font=%s]"  % aliens_font + "\nFelipe Mello" + "[/font]" + \
+	"[font=%s]"  % aliens_font + "\nFelipe Mello \nThiago Souza" + "[/font]" + \
 	
 	"[rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]" + "\n\nProgrammers: "  + "[/rainbow]" +\
 	"[font=%s]"  % aliens_font + "\nDouglas Carvalho \nIgor Amaral \nJoão Pedro Lomba " +\
-	"\nLuiz Fernando Coelho \nThiago Souza" + "[/font]" 
+	"\nLuiz Fernando Coelho \nGabriel de Carvalho" + "[/font]" 
 	
 	MenuMusic.play_scene_music()
 

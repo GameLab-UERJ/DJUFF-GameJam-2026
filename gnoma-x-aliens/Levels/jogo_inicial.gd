@@ -11,8 +11,12 @@ func _ready() -> void:
 
 
 func game_over() -> void:
-	EasyTransition.transition_to_path("res://menus/defeat_menu/defeat_menu.tscn",1,EasyTransition.TransitionAnim.FADE)
-
+	player.just_died()
+	
 
 func lost_life() -> void:
 	hp_hud.health_change()
+
+
+func _on_player_died() -> void:
+	EasyTransition.transition_to_path("res://menus/defeat_menu/defeat_menu.tscn",1,EasyTransition.TransitionAnim.FADE)
