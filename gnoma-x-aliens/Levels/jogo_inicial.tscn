@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://bb0vxy7wwjwik"]
 
+[ext_resource type="Script" uid="uid://gpotqhsiure" path="res://Levels/jogo_inicial.gd" id="1_cf0mp"]
+[ext_resource type="PackedScene" uid="uid://ckxcsqi1um2b8" path="res://UI/hp_hud.tscn" id="1_hlg74"]
 [ext_resource type="Texture2D" uid="uid://ft0rxgfbdkge" path="res://Assets/Tileset/TileSet-Gnomo x Alien ( Natureza ).png" id="1_upldb"]
 [ext_resource type="TileSet" uid="uid://dn7on72r0xo68" path="res://Assets/Tileset/new_tile_set.tres" id="2_22bof"]
 [ext_resource type="Texture2D" uid="uid://ccsefj0uho7li" path="res://Assets/Decorations/CASASMELOVARIANTS_DIREITA.png" id="3_f3krg"]
@@ -12,7 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://bmebh8syonlju" path="res://Entities/player/player.tscn" id="10_5nkjw"]
 [ext_resource type="Texture2D" uid="uid://b2yfnv7kclybi" path="res://Assets/BackGround Parallax/6 - Distant_trees.png" id="11_a5062"]
 [ext_resource type="Texture2D" uid="uid://je8ll7yjpvdj" path="res://Assets/BackGround Parallax/5 - Tree_row_BG_2.png" id="12_db6o8"]
+[ext_resource type="Script" uid="uid://bhkk84fvx283r" path="res://Levels/go_to_boss.gd" id="12_h7nnm"]
 [ext_resource type="Texture2D" uid="uid://c1vvbevwyohdv" path="res://Assets/BackGround Parallax/3 - Bottom_leaf_piles.png" id="13_bmssw"]
+[ext_resource type="Script" uid="uid://dwq47c1y4yg80" path="res://Levels/fallen_area.gd" id="13_uv1gx"]
 [ext_resource type="PackedScene" uid="uid://br4571go0lmfh" path="res://Entities/enemies/shooting_enemy.tscn" id="15_db6o8"]
 [ext_resource type="Texture2D" uid="uid://h8qhli812hv5" path="res://Assets/BackGround Parallax/1 - Leaf_top.png" id="15_hlg74"]
 [ext_resource type="PackedScene" uid="uid://chotu635406hr" path="res://Entities/enemies/sword_enemy.tscn" id="16_bmssw"]
@@ -242,8 +246,17 @@ _data = {
 &"RESET": SubResource("Animation_uv1gx")
 }
 
-[node name="Jogo_inicial" type="Node2D" unique_id=1382297692]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uv1gx"]
+size = Vector2(27, 26)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_njptj"]
+distance = 128.1477
+
+[node name="JogoInicial" type="Node2D" unique_id=1382297692]
 position = Vector2(2770, -257)
+script = ExtResource("1_cf0mp")
+
+[node name="HP_HUD" parent="." unique_id=374959831 instance=ExtResource("1_hlg74")]
 
 [node name="TileMap" type="Node" parent="." unique_id=643658493]
 
@@ -287,13 +300,31 @@ autoplay = &"Move"
 [node name="Plataforma" parent="Plataforms" unique_id=1847397177 instance=ExtResource("9_22bof")]
 position = Vector2(4593, 148)
 
-[node name="Enemies" type="Node" parent="." unique_id=1035958272]
+[node name="GoToBoss" type="Area2D" parent="." unique_id=1715093924]
+z_index = 1
+position = Vector2(1817.4419, 422.17017)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("12_h7nnm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoToBoss" unique_id=1792668923]
+position = Vector2(5.0581055, 12.829834)
+shape = SubResource("RectangleShape2D_uv1gx")
+
+[node name="FallenArea" type="Area2D" parent="." unique_id=2139281234 node_paths=PackedStringArray("player")]
+collision_mask = 4
+script = ExtResource("13_uv1gx")
+player = NodePath("../Player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallenArea" unique_id=104300327]
+position = Vector2(-1231.148, 1059.1477)
+shape = SubResource("WorldBoundaryShape2D_njptj")
 
 [node name="HammerEnemy" parent="." unique_id=71750838 instance=ExtResource("9_50pt0")]
 position = Vector2(-562, 628)
 
 [node name="Player" parent="." unique_id=1459404749 instance=ExtResource("10_5nkjw")]
-position = Vector2(-1478, 723)
+position = Vector2(-2707.5977, 732.92267)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1589796336]
 limit_left = 0
@@ -407,3 +438,8 @@ position = Vector2(901, 350)
 
 [node name="Nave_alien5" parent="." unique_id=1380044997 instance=ExtResource("18_hlg74")]
 position = Vector2(1661, 456)
+
+[connection signal="game_over" from="HP_HUD" to="." method="game_over"]
+[connection signal="body_entered" from="GoToBoss" to="GoToBoss" method="_on_body_entered"]
+[connection signal="body_entered" from="FallenArea" to="FallenArea" method="_on_body_entered"]
+[connection signal="took_damage" from="Player" to="." method="lost_life"]

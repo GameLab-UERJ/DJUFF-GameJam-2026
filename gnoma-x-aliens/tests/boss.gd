@@ -1,8 +1,11 @@
 extends CharacterBody2D
+class_name Boss
+
 
 signal boss_position_updated(boss_position: Vector2)
 signal boss_damaged(current_health: int, max_health: int)
 signal boss_died(final_position: Vector2)
+
 
 enum BossState {
 	DIALOGUE,
@@ -38,7 +41,7 @@ var direction: int = -1
 var start_position: Vector2
 var attack_rotation: int = 0
 
-var max_health: int = 60
+@export var max_health: int = 60
 var current_health: int = max_health
 
 var player: Player

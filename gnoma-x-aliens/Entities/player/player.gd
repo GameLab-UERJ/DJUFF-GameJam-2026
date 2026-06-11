@@ -2,12 +2,14 @@ extends CharacterBody2D
 class_name Player
 
 
-signal player_died
+signal died
+signal took_damage
 
 
 @export var time_to_fully_dim : float = 15
 
 
+var last_position : Vector2
 var _is_dead : bool = false
 
 
@@ -18,7 +20,7 @@ var _is_dead : bool = false
 @onready var land_player: AudioStreamPlayer2D = $SfxPlayers/LandPlayer
 
 
-func died() -> void:
+func just_died() -> void:
 	if _is_dead:
 		return
 	_is_dead = true
@@ -27,7 +29,7 @@ func died() -> void:
 
 
 func take_damage() -> void:
-	died()
+	took_damage.emit()
 
 
 func _on_movement_component_changed_facing(left: bool) -> void:
@@ -50,7 +52,7 @@ func _on_base_sprite_frame_changed() -> void:
 func _on_base_sprite_animation_finished() -> void:
 	match base_sprite.animation:
 		"die":
-			player_died.emit()
+			died.emit()
 
 
 func _on_movement_state_machine_player_transited(from: Variant, to: Variant) -> void:

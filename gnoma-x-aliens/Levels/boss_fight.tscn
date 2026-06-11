@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://c81l0hulr32gg"]
 
 [ext_resource type="Texture2D" uid="uid://b77clalv54k3j" path="res://Assets/Tileset/16x16 Steel Tileset.png" id="1_7cg3k"]
+[ext_resource type="Script" uid="uid://gpotqhsiure" path="res://Levels/jogo_inicial.gd" id="1_stjvj"]
+[ext_resource type="PackedScene" uid="uid://ckxcsqi1um2b8" path="res://UI/hp_hud.tscn" id="2_0gss2"]
 [ext_resource type="Texture2D" uid="uid://bxrbm2l7uvbil" path="res://Assets/BackGround Parallax/back.png" id="2_m5pgt"]
 [ext_resource type="PackedScene" uid="uid://dbxno8wijwyxg" path="res://tests/boss.tscn" id="3_m5pgt"]
 [ext_resource type="PackedScene" uid="uid://bmebh8syonlju" path="res://Entities/player/player.tscn" id="4_jdiin"]
@@ -144,6 +146,9 @@ data = PackedByteArray("//vURAAAA75wpVCifXCUzsQwIWi8FnnSvCMh+oKVOdhYAyRpAEAIkBBu
 
 [node name="BossFight" type="Node2D" unique_id=890963878]
 process_mode = 3
+script = ExtResource("1_stjvj")
+
+[node name="HP_HUD" parent="." unique_id=374959831 instance=ExtResource("2_0gss2")]
 
 [node name="GroundLayer" type="TileMapLayer" parent="." unique_id=1931938442]
 position = Vector2(-1, -40)
@@ -187,6 +192,7 @@ limit_bottom = 265
 
 [node name="NPC_Golem_Final" parent="." unique_id=998401793 instance=ExtResource("5_6rm8m")]
 position = Vector2(981.00006, 256)
+is_final = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=527022960]
 
@@ -243,3 +249,6 @@ stream = ExtResource("11_rqjxw")
 
 [node name="hit" type="AudioStreamPlayer2D" parent="Musicas_SFX" unique_id=1405831319]
 stream = ExtResource("12_fu4x7")
+
+[connection signal="game_over" from="HP_HUD" to="." method="game_over"]
+[connection signal="took_damage" from="Player" to="." method="lost_life"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gnoma x Aliens"
-run/main_scene="uid://bb0vxy7wwjwik"
+run/main_scene="uid://d4b7cvgy38tpi"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
