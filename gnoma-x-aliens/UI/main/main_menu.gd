@@ -39,7 +39,11 @@ func _on_credits_pressed() -> void:
 func _on_quit_pressed() -> void:
 	_disable_buttons()
 	await _press_sound()
-	get_tree().quit()
+	
+	if OS.has_feature("web"):
+		OS.shell_open("https://gamelabuerj.itch.io/")
+	else:
+		get_tree().quit()
 
 
 func _on_instagram_button_pressed() -> void:
