@@ -21,7 +21,7 @@ func _ready() -> void:
 	quit_button.pressed.connect(_on_quit_button_pressed)
 	retry_button.grab_focus()
 	
-	
+	MenuMusic.stop()
 	if name == "VictoryMenu":
 		theme_audio.stream = victory_sdx
 	else:

@@ -324,7 +324,7 @@ shape = SubResource("WorldBoundaryShape2D_njptj")
 position = Vector2(-562, 628)
 
 [node name="Player" parent="." unique_id=1459404749 instance=ExtResource("10_5nkjw")]
-position = Vector2(-2707.5977, 732.92267)
+position = Vector2(1670.4531, 412.12875)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1589796336]
 limit_left = 0

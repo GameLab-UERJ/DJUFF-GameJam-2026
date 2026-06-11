@@ -11,6 +11,7 @@ func _ready() -> void:
 		MenuMusic.play_scene_music(gameplay_music, -10)
 	elif name == "BossFight":
 		Util.current_scene = load("uid://c81l0hulr32gg")
+		MenuMusic.stop()
 
 
 func game_over() -> void:
