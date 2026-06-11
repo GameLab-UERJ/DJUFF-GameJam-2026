@@ -152,15 +152,18 @@ func take_damage(_damage_amount: int = 1) -> void:
 	if is_dead:
 		return
 	
-	is_dead = true
+	health -= 1
+	
 	is_moving = false
 	damaging_player = false
 	player = null
 	detected_player = null
 	
-	play_animation("dead")
-	if dead_sfx:
-		dead_sfx.play()
+	if health <= 0:
+		is_dead = true
+		play_animation("dead")
+		if dead_sfx:
+			dead_sfx.play()
 
 
 func _on_damage_area_body_entered(body: Node2D) -> void:

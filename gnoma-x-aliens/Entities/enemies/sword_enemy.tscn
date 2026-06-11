@@ -514,6 +514,7 @@ size = Vector2(128, 92.5)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_1nmc2")
+damage_player_range = Vector2i(11, 15)
 health = 3
 metadata/_custom_type_script = "uid://d2n53aah088pb"
 
@@ -528,7 +529,7 @@ state_machine = ExtResource("4_7a8b0")
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=544897740]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_h4x1u")
-animation = &"walk"
+animation = &"attack"
 autoplay = "idle"
 flip_h = true
 
