@@ -20,6 +20,7 @@ var _is_dead : bool = false
 @onready var footsteps_player: AudioStreamPlayer2D = $SfxPlayers/FootstepsPlayer
 @onready var jump_player: AudioStreamPlayer2D = $SfxPlayers/JumpPlayer
 @onready var land_player: AudioStreamPlayer2D = $SfxPlayers/LandPlayer
+@onready var took_damage_timer: Timer = $TookDamageTimer
 
 
 func just_died() -> void:
@@ -31,7 +32,11 @@ func just_died() -> void:
 
 
 func take_damage() -> void:
+	if not took_damage_timer.is_stopped():
+		return
+	
 	took_damage.emit()
+	took_damage_timer.start(0.5)
 
 
 func _on_movement_component_changed_facing(left: bool) -> void:

@@ -19,4 +19,5 @@ func lost_life() -> void:
 
 
 func _on_player_died() -> void:
+	print("diedededed")
 	EasyTransition.transition_to_path("res://menus/defeat_menu/defeat_menu.tscn",1,EasyTransition.TransitionAnim.FADE)

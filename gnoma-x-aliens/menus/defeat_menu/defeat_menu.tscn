@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dg8omy1y8exft" path="res://menus/result_menu.gd" id="1_lkcyq"]
 [ext_resource type="FontFile" uid="uid://b31bkh7k0hlq8" path="res://Assets/fonts/Happy Gnome Free Trial.ttf" id="2_2ukdy"]
+[ext_resource type="AudioStream" uid="uid://dobf5y7fgq3ql" path="res://Assets/sfx/Menu/abs-confirm-2.mp3" id="3_o7tus"]
+[ext_resource type="AudioStream" uid="uid://bfjotqjifnphe" path="res://Assets/sfx/Menu/abs-pointer-2.mp3" id="4_pwigw"]
+[ext_resource type="AudioStream" uid="uid://rm0u1kbm1oxv" path="res://Assets/Music/Gnoma_Alien_Music.wav" id="5_mir5w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_title"]
 font = ExtResource("2_2ukdy")
@@ -102,3 +105,18 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 text = "Sair"
+
+[node name="PressAudio" type="AudioStreamPlayer" parent="." unique_id=2057314231]
+stream = ExtResource("3_o7tus")
+volume_db = -6.0
+
+[node name="HoverAudio" type="AudioStreamPlayer" parent="." unique_id=1360160313]
+stream = ExtResource("4_pwigw")
+volume_db = -6.0
+
+[node name="ThemeAudio" type="AudioStreamPlayer" parent="." unique_id=1817429836]
+stream = ExtResource("5_mir5w")
+volume_db = -8.0
+
+[connection signal="mouse_entered" from="MarginContainer/Content/Buttons/RetryButton" to="." method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="MarginContainer/Content/Buttons/QuitButton" to="." method="_on_mouse_entered"]

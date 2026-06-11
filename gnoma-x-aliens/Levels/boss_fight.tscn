@@ -252,4 +252,5 @@ stream = ExtResource("11_rqjxw")
 stream = ExtResource("12_fu4x7")
 
 [connection signal="game_over" from="HP_HUD" to="." method="game_over"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="took_damage" from="Player" to="." method="lost_life"]

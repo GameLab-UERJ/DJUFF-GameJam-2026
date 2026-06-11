@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dg8omy1y8exft" path="res://menus/result_menu.gd" id="1_vyiqh"]
 [ext_resource type="PackedScene" uid="uid://bb0vxy7wwjwik" path="res://Levels/jogo_inicial.tscn" id="2_2rxy4"]
 [ext_resource type="FontFile" uid="uid://b31bkh7k0hlq8" path="res://Assets/fonts/Happy Gnome Free Trial.ttf" id="2_m7yqt"]
+[ext_resource type="AudioStream" uid="uid://dobf5y7fgq3ql" path="res://Assets/sfx/Menu/abs-confirm-2.mp3" id="4_32fe5"]
+[ext_resource type="AudioStream" uid="uid://bfjotqjifnphe" path="res://Assets/sfx/Menu/abs-pointer-2.mp3" id="5_hetui"]
+[ext_resource type="AudioStream" uid="uid://rm0u1kbm1oxv" path="res://Assets/Music/Gnoma_Alien_Music.wav" id="6_uy0pf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_title"]
 font = ExtResource("2_m7yqt")
@@ -25,6 +28,18 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.83, 0.92, 0.49, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32fe5"]
+bg_color = Color(0.16, 0.38, 0.24, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.83137256, 0, 0.49019608, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -91,7 +106,7 @@ theme_override_fonts/font = ExtResource("2_m7yqt")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_32fe5")
 text = "Jogar de novo"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/Content/Buttons" unique_id=873388943]
@@ -104,3 +119,18 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 text = "Sair"
+
+[node name="PressAudio" type="AudioStreamPlayer" parent="." unique_id=604852197]
+stream = ExtResource("4_32fe5")
+volume_db = -6.0
+
+[node name="HoverAudio" type="AudioStreamPlayer" parent="." unique_id=817394172]
+stream = ExtResource("5_hetui")
+volume_db = -6.0
+
+[node name="ThemeAudio" type="AudioStreamPlayer" parent="." unique_id=907359391]
+stream = ExtResource("6_uy0pf")
+volume_db = -8.0
+
+[connection signal="mouse_entered" from="MarginContainer/Content/Buttons/RetryButton" to="." method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="MarginContainer/Content/Buttons/QuitButton" to="." method="_on_mouse_entered"]

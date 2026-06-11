@@ -16,6 +16,7 @@ var can_interact: bool = false
 
 
 func _ready() -> void:
+	DialogueManager.dialogue_ended.connect(_on_dialogue_finished)
 	interact_area.body_entered.connect(_on_body_entered)
 	interact_area.body_exited.connect(_on_body_exited)
 
@@ -25,7 +26,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			dialogue_resource,
 			dialogue_title
 		)
-  #TODO VICTORY
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -39,3 +39,8 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _on_victory() -> void:
 	EasyTransition.transition_to_path("res://menus/victory_menu/victory_menu.tscn",1,EasyTransition.TransitionAnim.TEXTURE_LUMINANCE)
+
+
+func _on_dialogue_finished(dialogue : DialogueResource) -> void:
+	if is_final:
+		_on_victory()

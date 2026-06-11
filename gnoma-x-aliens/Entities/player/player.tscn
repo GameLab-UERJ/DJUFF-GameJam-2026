@@ -294,6 +294,9 @@ stream = ExtResource("10_wvtmh")
 volume_db = 10.0
 pitch_scale = 0.5
 
+[node name="TookDamageTimer" type="Timer" parent="." unique_id=511371604]
+one_shot = true
+
 [connection signal="transited" from="MovementStateMachinePlayer" to="." method="_on_movement_state_machine_player_transited"]
 [connection signal="updated" from="MovementStateMachinePlayer" to="." method="_on_movement_state_machine_player_updated"]
 [connection signal="changed_facing" from="MovementComponent" to="." method="_on_movement_component_changed_facing"]
