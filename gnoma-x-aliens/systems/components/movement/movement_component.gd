@@ -98,7 +98,7 @@ func handle_jump() -> void:
 func handle_gravity(delta : float) -> void:
 	if entity.is_on_floor():
 		_on_air = false
-		if parent is Player:
+		if is_player:
 			parent.last_position = parent.global_position 
 	else:
 		if not _on_air:

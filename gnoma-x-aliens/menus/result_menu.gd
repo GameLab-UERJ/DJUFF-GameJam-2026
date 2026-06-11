@@ -6,6 +6,9 @@ extends Control
 
 @onready var retry_button: Button = %RetryButton
 @onready var quit_button: Button = %QuitButton
+@onready var press_audio: AudioStreamPlayer = $PressAudio
+@onready var hover_audio: AudioStreamPlayer = $HoverAudio
+@onready var theme_audio: AudioStreamPlayer = $ThemeAudio
 
 
 func _ready() -> void:
@@ -16,16 +19,24 @@ func _ready() -> void:
 	retry_button.grab_focus()
 
 
+func _on_mouse_entered() -> void:
+	if hover_audio == null:
+		return
+	
+	hover_audio.play()
+	await hover_audio.finished
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 
 
 func _on_retry_button_pressed() -> void:
-	if not restart_scene:
-		return
-	get_tree().change_scene_to_packed(restart_scene)
+	press_audio.play()
+	EasyTransition.transition_to_scene(restart_scene,1,EasyTransition.TransitionAnim.BLUR)
 
 
 func _on_quit_button_pressed() -> void:
-	get_tree().quit()
+	press_audio.play()
+	EasyTransition.transition_to_scene(load("uid://d4b7cvgy38tpi"),1,EasyTransition.TransitionAnim.FADE)

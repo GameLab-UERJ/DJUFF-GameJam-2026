@@ -6,10 +6,12 @@ signal died
 signal took_damage
 
 
-@export var time_to_fully_dim : float = 15
-
-
 var last_position : Vector2
+var is_in_dialog : bool = false:
+	set(value):
+		is_in_dialog = value
+		if movement_component:
+			movement_component.enabled = not is_in_dialog
 var _is_dead : bool = false
 
 
@@ -18,6 +20,7 @@ var _is_dead : bool = false
 @onready var footsteps_player: AudioStreamPlayer2D = $SfxPlayers/FootstepsPlayer
 @onready var jump_player: AudioStreamPlayer2D = $SfxPlayers/JumpPlayer
 @onready var land_player: AudioStreamPlayer2D = $SfxPlayers/LandPlayer
+@onready var took_damage_timer: Timer = $TookDamageTimer
 
 
 func just_died() -> void:
@@ -29,7 +32,11 @@ func just_died() -> void:
 
 
 func take_damage() -> void:
+	if not took_damage_timer.is_stopped():
+		return
+	
 	took_damage.emit()
+	took_damage_timer.start(0.5)
 
 
 func _on_movement_component_changed_facing(left: bool) -> void:
@@ -52,6 +59,7 @@ func _on_base_sprite_frame_changed() -> void:
 func _on_base_sprite_animation_finished() -> void:
 	match base_sprite.animation:
 		"die":
+			collision_layer ^= Util.collision_layer_values["Player"]
 			died.emit()
 
 

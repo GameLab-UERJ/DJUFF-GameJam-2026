@@ -442,4 +442,5 @@ position = Vector2(1661, 456)
 [connection signal="game_over" from="HP_HUD" to="." method="game_over"]
 [connection signal="body_entered" from="GoToBoss" to="GoToBoss" method="_on_body_entered"]
 [connection signal="body_entered" from="FallenArea" to="FallenArea" method="_on_body_entered"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="took_damage" from="Player" to="." method="lost_life"]

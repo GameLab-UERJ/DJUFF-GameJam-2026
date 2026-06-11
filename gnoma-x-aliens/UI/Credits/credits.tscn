@@ -5,8 +5,8 @@
 [ext_resource type="FontFile" uid="uid://v1yj08bqw1mc" path="res://Assets/UI/Fonts/CrayonLibre/CrayonLibre-Regular.ttf" id="2_vcckd"]
 [ext_resource type="StyleBox" uid="uid://0ppvk40ecyn6" path="res://UI/main/button_config.tres" id="3_4i5kg"]
 [ext_resource type="AudioStream" uid="uid://rm0u1kbm1oxv" path="res://Assets/Music/Gnoma_Alien_Music.wav" id="5_4i5kg"]
-[ext_resource type="AudioStream" uid="uid://dobf5y7fgq3ql" path="res://Assets/SFX/Menu/abs-confirm-2.mp3" id="5_lfta3"]
-[ext_resource type="AudioStream" uid="uid://bfjotqjifnphe" path="res://Assets/SFX/Menu/abs-pointer-2.mp3" id="6_30bwe"]
+[ext_resource type="AudioStream" uid="uid://dobf5y7fgq3ql" path="res://Assets/sfx/Menu/abs-confirm-2.mp3" id="5_lfta3"]
+[ext_resource type="AudioStream" uid="uid://bfjotqjifnphe" path="res://Assets/sfx/Menu/abs-pointer-2.mp3" id="6_30bwe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4oh0"]
 bg_color = Color(0.6, 0.6, 0.6, 0.6745098)
