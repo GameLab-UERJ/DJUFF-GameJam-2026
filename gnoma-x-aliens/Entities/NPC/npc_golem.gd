@@ -11,6 +11,7 @@ signal victory
 
 var can_interact: bool = false
 
+var player: Player
 
 @onready var interact_area: Area2D = $InteractArea
 @onready var animation_golem: AnimatedSprite2D = $Animation_Golem
@@ -24,6 +25,8 @@ func _ready() -> void:
 	animation_golem.material = ShaderMaterial.new()
 	animation_golem.material.shader = preload("uid://i8xl186i1o18")
 	animation_golem.material.set("shader_parameter/outline_color",Color.AQUAMARINE)
+	
+	player = get_tree().get_first_node_in_group("player")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -32,8 +35,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			dialogue_resource,
 			dialogue_title
 		)
-		var player = get_node("player")
 		
+		player.movement_component.enabled = false
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -56,3 +59,5 @@ func _on_victory() -> void:
 func _on_dialogue_finished(dialogue : DialogueResource) -> void:
 	if is_final:
 		_on_victory()
+		
+	player.movement_component.enabled = true
