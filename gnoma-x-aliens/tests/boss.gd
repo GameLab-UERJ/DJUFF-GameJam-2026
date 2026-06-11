@@ -2,7 +2,6 @@ extends CharacterBody2D
 class_name Boss
 
 
-signal boss_position_updated(boss_position: Vector2)
 signal boss_damaged(current_health: int, max_health: int)
 signal boss_died(final_position: Vector2)
 signal boss_dead_animation_finished()
@@ -27,7 +26,7 @@ enum BossState {
 @onready var wall_detector: RayCast2D = $Wall_Detector
 @onready var ground_detector: RayCast2D = $Ground_Detector
 @onready var fake_wall: TileMapLayer = $"../FakeWall"
-@onready var door: Node2D = $"../Porta"
+@onready var door: Node2D = get_parent().get_node_or_null("Porta")
 @onready var attack_1_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/attack1"
 @onready var attack_2_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/attack2"
 @onready var dead_sfx: AudioStreamPlayer2D = $"../Musicas_SFX/dead"
@@ -425,7 +424,7 @@ func _open_door() -> void:
 		door.queue_free()
 		print("PORTA ABERTA!")
 
-func _on_hitbox_area_entered(area: Area2D) -> void:
+func _on_hitbox_area_entered(_area: Area2D) -> void:
 	take_damage(1)
 
 func heal(amount: int) -> void:

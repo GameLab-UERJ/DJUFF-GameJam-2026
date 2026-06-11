@@ -59,6 +59,7 @@ func _on_base_sprite_frame_changed() -> void:
 func _on_base_sprite_animation_finished() -> void:
 	match base_sprite.animation:
 		"die":
+			visible = false
 			collision_layer ^= Util.collision_layer_values["Player"]
 			died.emit()
 
