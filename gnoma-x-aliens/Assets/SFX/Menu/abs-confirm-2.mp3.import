@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dobf5y7fgq3ql"
-path="res://.godot/imported/abs-confirm-2.mp3-59048600228a30db73f4d62e7d14f233.mp3str"
+path="res://.godot/imported/abs-confirm-2.mp3-5d2d4454cc0956fcc80873cc864a289b.mp3str"
 
 [deps]
 
-source_file="res://Assets/sfx/Menu/abs-confirm-2.mp3"
-dest_files=["res://.godot/imported/abs-confirm-2.mp3-59048600228a30db73f4d62e7d14f233.mp3str"]
+source_file="res://Assets/SFX/Menu/abs-confirm-2.mp3"
+dest_files=["res://.godot/imported/abs-confirm-2.mp3-5d2d4454cc0956fcc80873cc864a289b.mp3str"]
 
 [params]
 

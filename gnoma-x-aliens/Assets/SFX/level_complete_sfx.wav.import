@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ci0ne44sryv7q"
-path="res://.godot/imported/level_complete_sfx.wav-f6e9a1244e9b8eddbaeb6ea5c3ff7d7b.sample"
+path="res://.godot/imported/level_complete_sfx.wav-0dbd79f1d51760c67063a60b5962b17c.sample"
 
 [deps]
 
-source_file="res://Assets/sfx/level_complete_sfx.wav"
-dest_files=["res://.godot/imported/level_complete_sfx.wav-f6e9a1244e9b8eddbaeb6ea5c3ff7d7b.sample"]
+source_file="res://Assets/SFX/level_complete_sfx.wav"
+dest_files=["res://.godot/imported/level_complete_sfx.wav-0dbd79f1d51760c67063a60b5962b17c.sample"]
 
 [params]
 
