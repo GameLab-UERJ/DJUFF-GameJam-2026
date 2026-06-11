@@ -20,11 +20,11 @@ position = Vector2(541, 578)
 scale = Vector2(3, 3)
 
 [node name="Plataforma2" parent="." unique_id=1129970654 instance=ExtResource("1_eig8f")]
-position = Vector2(178, 570)
+position = Vector2(160, 588)
 scale = Vector2(3, 3)
 
 [node name="Player" parent="." unique_id=1459404749 instance=ExtResource("1_yggfj")]
-position = Vector2(3012, 232)
+position = Vector2(1385, 436)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=692210525]
 

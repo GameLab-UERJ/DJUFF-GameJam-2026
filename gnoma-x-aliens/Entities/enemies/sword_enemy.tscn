@@ -8,11 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://b374eqyk8fgip" path="res://Assets/Inimigo_1/SLIME-ALIEN-IDLE.png" id="4_p8tv7"]
 [ext_resource type="Texture2D" uid="uid://cm3frotffcv5b" path="res://Assets/Inimigo_1/SLIME-ALIEN-IDLE-TRANSFORM.png" id="5_7a8b0"]
 [ext_resource type="Texture2D" uid="uid://dx0b7w5mu7doa" path="res://Assets/Inimigo_1/SLIME-ALIEN-WALK.png" id="6_ytwod"]
+[ext_resource type="Texture2D" uid="uid://xolastfakqci" path="res://Assets/Inimigo_2/slimedead-Sheet.png" id="7_bs6xp"]
 [ext_resource type="PackedScene" uid="uid://cwcjmyhf5cm3f" path="res://systems/components/movement/movement_component.tscn" id="7_w2u54"]
 [ext_resource type="AudioStream" uid="uid://diwkos2rauu7n" path="res://Assets/sfx/alert.wav" id="10_mim54"]
 [ext_resource type="AudioStream" uid="uid://q5wdrra46oaj" path="res://Assets/sfx/derrickmckinnon-keys-falling-on-ground-283265.mp3" id="11_bs6xp"]
 [ext_resource type="AudioStream" uid="uid://dlpt0rvt1tv6h" path="res://Assets/sfx/freesound_community-spawn-sound-43782.mp3" id="12_0mib4"]
 [ext_resource type="AudioStream" uid="uid://q8h65p64hlqn" path="res://Assets/sfx/universfield-sword-blade-slicing-flesh-352708.mp3" id="13_vhkxa"]
+[ext_resource type="AudioStream" uid="uid://dxalxkvb7fipl" path="res://Assets/sfx/data_pion-sfx34-stomp-534302 (1).mp3" id="15_0mib4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dyq3k"]
 atlas = ExtResource("2_w2u54")
@@ -150,6 +152,30 @@ region = Rect2(672, 0, 96, 96)
 atlas = ExtResource("3_ra2xl")
 region = Rect2(1728, 0, 96, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4x1u"]
+atlas = ExtResource("7_bs6xp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0swo"]
+atlas = ExtResource("7_bs6xp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78b8q"]
+atlas = ExtResource("7_bs6xp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ecbc"]
+atlas = ExtResource("7_bs6xp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkef4"]
+atlas = ExtResource("7_bs6xp")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqgrp"]
+atlas = ExtResource("7_bs6xp")
+region = Rect2(160, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_m6fqu"]
 atlas = ExtResource("4_p8tv7")
 region = Rect2(0, 0, 32, 32)
@@ -286,7 +312,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"alert",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -375,7 +401,30 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 20.0
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4x1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0swo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78b8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ecbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkef4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqgrp")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -448,7 +497,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x2dmb")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
@@ -459,13 +508,12 @@ animations = [{
 size = Vector2(41, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ytwod"]
-size = Vector2(259, 150)
+size = Vector2(128, 92.5)
 
 [node name="SwordEnemy" type="CharacterBody2D" unique_id=71750838]
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_1nmc2")
-damage_player_range = Vector2i(11, 16)
 health = 3
 metadata/_custom_type_script = "uid://d2n53aah088pb"
 
@@ -480,7 +528,7 @@ state_machine = ExtResource("4_7a8b0")
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=544897740]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_h4x1u")
-animation = &"attack"
+animation = &"walk"
 autoplay = "idle"
 flip_h = true
 
@@ -501,7 +549,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea" unique_id=31952771]
-position = Vector2(0.5, -63.5)
+position = Vector2(0, -34.75)
 shape = SubResource("RectangleShape2D_ytwod")
 debug_color = Color(1, 1, 1, 0.41960785)
 
@@ -521,6 +569,26 @@ stream = ExtResource("12_0mib4")
 [node name="AttackSfx" type="AudioStreamPlayer2D" parent="SoundEffects" unique_id=1004887187]
 stream = ExtResource("13_vhkxa")
 pitch_scale = 0.5
+
+[node name="dead_sfx" type="AudioStreamPlayer2D" parent="SoundEffects" unique_id=842329390]
+position = Vector2(0, -1)
+stream = ExtResource("15_0mib4")
+pitch_scale = 0.5
+
+[node name="Wall_Detector" type="RayCast2D" parent="." unique_id=1506048509]
+position = Vector2(0, -2)
+target_position = Vector2(15, 0)
+collision_mask = 2
+
+[node name="Ground_Detector" type="RayCast2D" parent="." unique_id=1420350203]
+position = Vector2(13, 0)
+target_position = Vector2(0, 27)
+collision_mask = 2
+
+[node name="Ground_Detector2" type="RayCast2D" parent="." unique_id=15865663]
+position = Vector2(-13, 0)
+target_position = Vector2(0, 27)
+collision_mask = 2
 
 [connection signal="animation_finished" from="Sprites" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="Sprites" to="." method="_on_sprites_frame_changed"]
