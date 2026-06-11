@@ -6,6 +6,7 @@ var gnoma: String = "[rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]Gnoma[/rainbow]
 var aliens_font = "res://Assets/UI/Fonts/GlitchGoblin/GlitchGoblin.ttf"
 
 var game_start: String = "uid://bb0vxy7wwjwik"
+var game_credits: String = "uid://f4o8mclgl0og"
 
 var link_button: TextureButton
 
@@ -20,12 +21,18 @@ var link_button: TextureButton
 
 func _ready() -> void:
 	title.text = gnoma + "[font=%s]" % aliens_font + aliens + "[/font]"
-	theme_audio.play()
+	#theme_audio.play()
+	MenuMusic.play_scene_music()
 
 
 func _on_new_game_pressed() -> void:
 	_press_sound()
 	EasyTransition.transition_to_path(game_start,1.0,EasyTransition.TransitionAnim.BLUR)
+
+
+func _on_credits_pressed() -> void:
+	_press_sound()
+	EasyTransition.transition_to_path(game_credits,1.0,EasyTransition.TransitionAnim.BLUR)
 
 
 func _on_quit_pressed() -> void:
